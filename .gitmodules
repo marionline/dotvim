@@ -7,3 +7,6 @@
 [submodule "bundle/phpErrorMarker"]
 	path = bundle/phpErrorMarker
 	url = https://github.com/vim-scripts/phpErrorMarker.git
+[submodule "bundle/ManPageView"]
+	path = bundle/ManPageView
+	url = https://github.com/vim-scripts/ManPageView.git
