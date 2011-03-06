@@ -16,3 +16,6 @@
 [submodule "bundle/comments"]
 	path = bundle/comments
 	url = https://github.com/vim-scripts/comments.vim
+[submodule "bundle/DBGp-Remote-Debugger-Interface"]
+	path = bundle/DBGp-Remote-Debugger-Interface
+	url = https://github.com/vim-scripts/DBGp-Remote-Debugger-Interface.git
