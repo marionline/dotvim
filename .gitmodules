@@ -13,3 +13,6 @@
 [submodule "bundle/closetag"]
 	path = bundle/closetag
 	url = https://github.com/vim-scripts/closetag.vim.git
+[submodule "bundle/comments"]
+	path = bundle/comments
+	url = https://github.com/vim-scripts/comments.vim
