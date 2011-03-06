@@ -10,3 +10,6 @@
 [submodule "bundle/ManPageView"]
 	path = bundle/ManPageView
 	url = https://github.com/vim-scripts/ManPageView.git
+[submodule "bundle/closetag"]
+	path = bundle/closetag
+	url = https://github.com/vim-scripts/closetag.vim.git
