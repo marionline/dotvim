@@ -22,6 +22,7 @@ set textwidth=75
 
 "Per il completamento automatico in vim
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS smartindent shiftwidth=4 "aggiungo l'indentazione per i css
+
 augroup php
     " devo disabilitarlo perchè eclim non funziona se no
     let g:acp_behaviorPhpOmniLength= -1
@@ -36,7 +37,6 @@ augroup php
     autocmd FileType php nnoremap <C-P> :call PhpDocSingle()<CR>
     autocmd FileType php vnoremap <C-P> :call PhpDocRange()<CR>
 
-    "autocmd Filetype php set textwidth=75
     autocmd FileType php set formatoptions=cq
     " highlights interpolated variables in sql strings and does sql-syntax
     " highlighting. yay
@@ -135,3 +135,15 @@ nmap <esc>l gl
 nmap <esc>4 g$
 nmap <esc>6 g^
 nmap <esc>0 g^
+
+"Folding
+augroup Folding
+    au BufWinLeave * mkview
+    au BufWinEnter * silent loadview
+    au BufReadPre * setlocal foldmethod=indent
+    au BufWinEnter * if &fdm == 'indent' | setlocal foldmethod=manual | endif
+    inoremap <F9> <C-O>za
+    nnoremap <F9> za
+    onoremap <F9> <C-C>za
+    vnoremap <F9> zf
+augroup END
