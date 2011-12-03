@@ -1,0 +1,696 @@
+let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
+argglobal
+setlocal keymap=
+setlocal noarabic
+setlocal autoindent
+setlocal nobinary
+setlocal bufhidden=
+setlocal nobuflisted
+setlocal buftype=help
+setlocal nocindent
+setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
+setlocal cinoptions=
+setlocal cinwords=if,else,while,do,for,switch
+setlocal colorcolumn=
+setlocal comments=s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,fb:-
+setlocal commentstring=/*%s*/
+setlocal complete=.,w,b,u,t,i
+setlocal concealcursor=nc
+setlocal conceallevel=2
+setlocal completefunc=
+setlocal nocopyindent
+setlocal cryptmethod=
+setlocal nocursorbind
+setlocal nocursorcolumn
+setlocal nocursorline
+setlocal define=
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=
+setlocal noexpandtab
+if &filetype != 'help'
+setlocal filetype=help
+endif
+setlocal foldcolumn=0
+setlocal nofoldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldmarker={{{,}}}
+setlocal foldmethod=manual
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldtext=foldtext()
+setlocal formatexpr=
+setlocal formatoptions=tcroql
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal grepprg=
+setlocal iminsert=0
+setlocal imsearch=0
+setlocal include=
+setlocal includeexpr=
+setlocal indentexpr=
+setlocal indentkeys=0{,0},:,0#,!^F,o,O,e
+setlocal noinfercase
+setlocal iskeyword=!-~,^*,^|,^\",192-255
+setlocal keywordprg=
+setlocal linebreak
+setlocal nolisp
+setlocal nolist
+setlocal makeprg=
+setlocal matchpairs=(:),{:},[:]
+setlocal modeline
+setlocal nomodifiable
+setlocal nrformats=octal,hex
+setlocal nonumber
+setlocal numberwidth=4
+setlocal omnifunc=
+setlocal path=
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal readonly
+setlocal norelativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal shiftwidth=4
+setlocal noshortname
+setlocal nosmartindent
+setlocal softtabstop=4
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en
+setlocal statusline=
+setlocal suffixesadd=
+setlocal swapfile
+setlocal synmaxcol=3000
+if &syntax != 'help'
+setlocal syntax=help
+endif
+setlocal tabstop=8
+setlocal tags=
+setlocal textwidth=78
+setlocal thesaurus=
+setlocal noundofile
+setlocal nowinfixheight
+setlocal nowinfixwidth
+setlocal wrap
+setlocal wrapmargin=0
+silent! normal! zE
+4,4fold
+4,4fold
+4,4fold
+4,4fold
+21,21fold
+21,21fold
+21,21fold
+21,21fold
+21,21fold
+21,21fold
+21,21fold
+21,21fold
+21,21fold
+21,21fold
+21,21fold
+21,21fold
+21,21fold
+21,21fold
+23,25fold
+23,25fold
+23,25fold
+23,25fold
+23,25fold
+23,25fold
+34,34fold
+34,34fold
+34,34fold
+34,34fold
+34,34fold
+34,34fold
+34,34fold
+34,34fold
+34,34fold
+34,34fold
+34,34fold
+34,34fold
+34,34fold
+34,34fold
+36,37fold
+36,37fold
+36,37fold
+36,37fold
+36,37fold
+36,37fold
+43,43fold
+43,43fold
+43,43fold
+43,43fold
+43,43fold
+43,43fold
+43,43fold
+43,43fold
+43,43fold
+43,43fold
+43,43fold
+43,43fold
+45,46fold
+45,46fold
+45,46fold
+45,46fold
+45,46fold
+45,46fold
+52,52fold
+52,52fold
+52,52fold
+52,52fold
+52,52fold
+52,52fold
+52,52fold
+52,52fold
+49,52fold
+49,52fold
+49,52fold
+49,52fold
+49,52fold
+49,52fold
+54,54fold
+54,54fold
+54,54fold
+54,54fold
+54,54fold
+54,54fold
+75,75fold
+75,75fold
+87,87fold
+87,87fold
+89,89fold
+89,89fold
+101,101fold
+101,101fold
+101,101fold
+101,101fold
+101,101fold
+101,101fold
+101,101fold
+101,101fold
+101,101fold
+101,101fold
+101,101fold
+101,101fold
+101,101fold
+101,101fold
+103,105fold
+103,105fold
+103,105fold
+103,105fold
+103,105fold
+103,105fold
+111,111fold
+111,111fold
+111,111fold
+111,111fold
+111,111fold
+111,111fold
+111,111fold
+111,111fold
+108,111fold
+108,111fold
+108,111fold
+108,111fold
+108,111fold
+108,111fold
+119,119fold
+119,119fold
+119,119fold
+119,119fold
+119,119fold
+119,119fold
+119,119fold
+119,119fold
+113,119fold
+113,119fold
+113,119fold
+113,119fold
+113,119fold
+113,119fold
+138,138fold
+138,138fold
+138,138fold
+138,138fold
+138,138fold
+138,138fold
+138,138fold
+138,138fold
+124,138fold
+124,138fold
+124,138fold
+124,138fold
+124,138fold
+124,138fold
+142,142fold
+142,142fold
+142,142fold
+142,142fold
+142,142fold
+142,142fold
+142,142fold
+142,142fold
+140,142fold
+140,142fold
+140,142fold
+140,142fold
+140,142fold
+140,142fold
+144,145fold
+144,145fold
+144,145fold
+144,145fold
+144,145fold
+144,145fold
+152,152fold
+152,152fold
+152,152fold
+152,152fold
+152,152fold
+152,152fold
+152,152fold
+152,152fold
+152,152fold
+152,152fold
+154,155fold
+154,155fold
+154,155fold
+154,155fold
+154,155fold
+154,155fold
+166,166fold
+166,166fold
+166,166fold
+166,166fold
+166,166fold
+166,166fold
+166,166fold
+166,166fold
+158,166fold
+158,166fold
+158,166fold
+158,166fold
+158,166fold
+158,166fold
+171,171fold
+171,171fold
+168,171fold
+168,171fold
+168,171fold
+168,171fold
+168,171fold
+168,171fold
+186,186fold
+186,186fold
+174,186fold
+174,186fold
+174,186fold
+174,186fold
+174,186fold
+174,186fold
+189,189fold
+189,189fold
+188,189fold
+188,189fold
+188,189fold
+188,189fold
+188,189fold
+188,189fold
+192,196fold
+192,196fold
+192,196fold
+192,196fold
+192,196fold
+192,196fold
+203,204fold
+203,204fold
+199,204fold
+199,204fold
+199,204fold
+199,204fold
+199,204fold
+199,204fold
+209,212fold
+209,212fold
+206,212fold
+206,212fold
+206,212fold
+206,212fold
+206,212fold
+206,212fold
+227,227fold
+227,227fold
+227,227fold
+227,227fold
+227,227fold
+227,227fold
+215,227fold
+215,227fold
+215,227fold
+215,227fold
+215,227fold
+215,227fold
+234,234fold
+234,234fold
+234,234fold
+234,234fold
+234,234fold
+234,234fold
+229,234fold
+229,234fold
+229,234fold
+229,234fold
+229,234fold
+229,234fold
+236,242fold
+236,242fold
+236,242fold
+236,242fold
+236,242fold
+236,242fold
+283,283fold
+283,283fold
+293,293fold
+293,293fold
+293,293fold
+293,293fold
+293,293fold
+293,293fold
+293,293fold
+293,293fold
+293,293fold
+293,293fold
+293,293fold
+293,293fold
+293,293fold
+293,293fold
+315,315fold
+315,315fold
+315,315fold
+315,315fold
+315,315fold
+315,315fold
+315,315fold
+315,315fold
+315,315fold
+315,315fold
+315,315fold
+315,315fold
+315,315fold
+315,315fold
+322,326fold
+322,326fold
+322,326fold
+321,326fold
+321,326fold
+328,328fold
+328,328fold
+338,339fold
+338,339fold
+337,339fold
+337,339fold
+370,370fold
+370,370fold
+367,370fold
+367,370fold
+393,393fold
+393,393fold
+401,401fold
+401,401fold
+401,401fold
+401,401fold
+401,401fold
+401,401fold
+401,401fold
+401,401fold
+401,401fold
+401,401fold
+401,401fold
+401,401fold
+401,401fold
+401,401fold
+401,401fold
+401,401fold
+405,405fold
+405,405fold
+409,409fold
+409,409fold
+423,423fold
+423,423fold
+426,426fold
+426,426fold
+431,431fold
+431,431fold
+435,435fold
+435,435fold
+446,446fold
+446,446fold
+446,446fold
+446,446fold
+446,446fold
+446,446fold
+446,446fold
+446,446fold
+446,446fold
+446,446fold
+446,446fold
+446,446fold
+448,448fold
+448,448fold
+448,448fold
+448,448fold
+448,448fold
+448,448fold
+448,448fold
+448,448fold
+448,448fold
+448,448fold
+448,448fold
+448,448fold
+452,452fold
+452,452fold
+452,452fold
+452,452fold
+452,452fold
+452,452fold
+452,452fold
+452,452fold
+450,452fold
+450,452fold
+450,452fold
+450,452fold
+456,456fold
+456,456fold
+456,456fold
+456,456fold
+456,456fold
+456,456fold
+456,456fold
+456,456fold
+454,456fold
+454,456fold
+454,456fold
+454,456fold
+460,460fold
+460,460fold
+460,460fold
+460,460fold
+460,460fold
+460,460fold
+460,460fold
+460,460fold
+458,460fold
+458,460fold
+458,460fold
+458,460fold
+465,465fold
+465,465fold
+465,465fold
+465,465fold
+465,465fold
+465,465fold
+465,465fold
+465,465fold
+462,465fold
+462,465fold
+462,465fold
+462,465fold
+467,468fold
+467,468fold
+467,468fold
+467,468fold
+446,468fold
+446,468fold
+481,481fold
+481,481fold
+481,481fold
+481,481fold
+481,481fold
+481,481fold
+481,481fold
+481,481fold
+481,481fold
+481,481fold
+481,481fold
+481,481fold
+481,481fold
+481,481fold
+484,484fold
+484,484fold
+483,484fold
+483,484fold
+483,484fold
+483,484fold
+486,486fold
+486,486fold
+486,486fold
+486,486fold
+490,490fold
+490,490fold
+489,490fold
+489,490fold
+489,490fold
+489,490fold
+495,495fold
+495,495fold
+493,495fold
+493,495fold
+493,495fold
+493,495fold
+497,497fold
+497,497fold
+497,497fold
+497,497fold
+502,502fold
+502,502fold
+502,502fold
+502,502fold
+502,502fold
+502,502fold
+502,502fold
+502,502fold
+502,502fold
+502,502fold
+502,502fold
+502,502fold
+502,502fold
+502,502fold
+511,511fold
+511,511fold
+513,513fold
+513,513fold
+515,515fold
+515,515fold
+528,528fold
+528,528fold
+528,528fold
+528,528fold
+528,528fold
+528,528fold
+528,528fold
+528,528fold
+528,528fold
+528,528fold
+528,528fold
+528,528fold
+530,531fold
+530,531fold
+530,531fold
+530,531fold
+534,534fold
+534,534fold
+534,534fold
+534,534fold
+537,537fold
+537,537fold
+537,537fold
+537,537fold
+540,540fold
+540,540fold
+540,540fold
+540,540fold
+543,543fold
+543,543fold
+543,543fold
+543,543fold
+552,552fold
+552,552fold
+552,552fold
+552,552fold
+552,552fold
+552,552fold
+552,552fold
+552,552fold
+552,552fold
+552,552fold
+552,552fold
+552,552fold
+552,552fold
+552,552fold
+554,554fold
+554,554fold
+554,554fold
+554,554fold
+559,559fold
+559,559fold
+559,559fold
+559,559fold
+559,559fold
+559,559fold
+559,559fold
+559,559fold
+559,559fold
+559,559fold
+559,559fold
+559,559fold
+561,564fold
+561,564fold
+561,564fold
+561,564fold
+567,568fold
+567,568fold
+567,568fold
+567,568fold
+582,584fold
+582,584fold
+582,584fold
+582,584fold
+587,589fold
+587,589fold
+587,589fold
+587,589fold
+592,592fold
+592,592fold
+592,592fold
+592,592fold
+595,596fold
+595,596fold
+595,596fold
+595,596fold
+599,605fold
+599,605fold
+599,605fold
+599,605fold
+609,610fold
+609,610fold
+609,610fold
+609,610fold
+666,668fold
+666,668fold
+let s:l = 102 - ((1 * winheight(0) + 13) / 27)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+102
+normal! 047l
+let &so = s:so_save | let &siso = s:siso_save
+doautoall SessionLoadPost
+" vim: set ft=vim :

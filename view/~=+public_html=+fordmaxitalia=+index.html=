@@ -1,0 +1,169 @@
+let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
+argglobal
+setlocal keymap=
+setlocal noarabic
+setlocal autoindent
+setlocal nobinary
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
+setlocal nocindent
+setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
+setlocal cinoptions=
+setlocal cinwords=if,else,while,do,for,switch
+setlocal colorcolumn=
+setlocal comments=sr:<!--,m:-,e:-->
+setlocal commentstring=<!--%s-->
+setlocal complete=.,w,b,u,t,i
+setlocal concealcursor=
+setlocal conceallevel=0
+setlocal completefunc=eclim#html#complete#CodeComplete
+setlocal nocopyindent
+setlocal cryptmethod=
+setlocal nocursorbind
+setlocal nocursorcolumn
+setlocal nocursorline
+setlocal define=
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=%E%f:%l:\ %.%#\ error\ :\ %m,%W%f:%l:\ %.%#\ warning\ :\ %m,%-Z%p^,%-C%.%#,%-G%.%#
+setlocal noexpandtab
+if &filetype != 'xhtml'
+setlocal filetype=xhtml
+endif
+setlocal foldcolumn=0
+setlocal foldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldmarker={{{,}}}
+setlocal foldmethod=manual
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldtext=foldtext()
+setlocal formatexpr=
+setlocal formatoptions=croql
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal grepprg=
+setlocal iminsert=0
+setlocal imsearch=0
+setlocal include=
+setlocal includeexpr=
+setlocal indentexpr=EclimGetHtmlIndent(v:lnum)
+setlocal indentkeys=0{,0},!^F,o,O,>,},0),0},),;,0{,!^F,o,O
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255
+setlocal keywordprg=
+setlocal linebreak
+setlocal nolisp
+setlocal list
+setlocal makeprg=xmllint\ --valid\ --noout\ $*
+setlocal matchpairs=(:),{:},[:],<:>
+setlocal modeline
+setlocal modifiable
+setlocal nrformats=octal,hex
+setlocal number
+setlocal numberwidth=4
+setlocal omnifunc=htmlcomplete#CompleteTags
+setlocal path=
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal norelativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal shiftwidth=4
+setlocal noshortname
+setlocal nosmartindent
+setlocal softtabstop=4
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en
+setlocal statusline=
+setlocal suffixesadd=
+setlocal swapfile
+setlocal synmaxcol=3000
+if &syntax != 'xhtml'
+setlocal syntax=xhtml
+endif
+setlocal tabstop=4
+setlocal tags=
+setlocal textwidth=75
+setlocal thesaurus=
+setlocal noundofile
+setlocal nowinfixheight
+setlocal nowinfixwidth
+setlocal wrap
+setlocal wrapmargin=0
+silent! normal! zE
+18,23fold
+46,46fold
+50,50fold
+54,55fold
+44,56fold
+43,56fold
+40,57fold
+60,61fold
+72,74fold
+69,77fold
+68,78fold
+81,88fold
+92,93fold
+91,95fold
+99,100fold
+18
+normal zo
+40
+normal zo
+43
+normal zo
+44
+normal zo
+46
+normal zc
+50
+normal zc
+54
+normal zc
+44
+normal zo
+43
+normal zo
+40
+normal zo
+60
+normal zo
+68
+normal zo
+69
+normal zo
+72
+normal zo
+69
+normal zo
+68
+normal zo
+81
+normal zc
+91
+normal zo
+92
+normal zc
+91
+normal zc
+99
+normal zc
+let s:l = 77 - ((18 * winheight(0) + 13) / 27)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+77
+normal! 0
+lcd ~/public_html/fordmaxitalia
+let &so = s:so_save | let &siso = s:siso_save
+doautoall SessionLoadPost
+" vim: set ft=vim :

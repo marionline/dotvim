@@ -1,0 +1,354 @@
+let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
+argglobal
+onoremap <buffer> <silent> [[ ?\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)?:nohls
+nnoremap <buffer> <silent> [[ ?\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)?:nohls
+onoremap <buffer> <silent> ]] /\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)/:nohls
+nnoremap <buffer> <silent> ]] /\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)/:nohls
+setlocal keymap=
+setlocal noarabic
+setlocal noautoindent
+setlocal nobinary
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
+setlocal cindent
+setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
+setlocal cinoptions=
+setlocal cinwords=if,else,while,do,for,switch
+setlocal colorcolumn=
+setlocal comments=s1:/*,mb:*,ex:*/,://,:#
+setlocal commentstring=/*%s*/
+setlocal complete=.,w,b,u,t,i
+setlocal concealcursor=
+setlocal conceallevel=0
+setlocal completefunc=eclim#php#complete#CodeComplete
+setlocal nocopyindent
+setlocal cryptmethod=
+setlocal nocursorbind
+setlocal nocursorcolumn
+setlocal nocursorline
+setlocal define=
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=
+setlocal noexpandtab
+if &filetype != 'php'
+setlocal filetype=php
+endif
+setlocal foldcolumn=0
+setlocal foldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldmarker={{{,}}}
+setlocal foldmethod=manual
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldtext=foldtext()
+setlocal formatexpr=
+setlocal formatoptions=cq
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal grepprg=
+setlocal iminsert=0
+setlocal imsearch=0
+setlocal include=\\(require\\|include\\)\\(_once\\)\\?
+setlocal includeexpr=
+setlocal indentexpr=EclimGetPhpHtmlIndent(v:lnum)
+setlocal indentkeys=0{,0},0),:,!^F,o,O,e,*<Return>,=?>,=<?,=*/,<>>,<bs>,{,}
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255
+setlocal keywordprg=
+setlocal linebreak
+setlocal nolisp
+setlocal nolist
+setlocal makeprg=
+setlocal matchpairs=(:),{:},[:],<:>
+setlocal modeline
+setlocal modifiable
+setlocal nrformats=octal,hex
+setlocal number
+setlocal numberwidth=4
+setlocal omnifunc=phpcomplete#CompletePHP
+setlocal path=
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal norelativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal shiftwidth=4
+setlocal noshortname
+setlocal nosmartindent
+setlocal softtabstop=4
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en
+setlocal statusline=
+setlocal suffixesadd=
+setlocal swapfile
+setlocal synmaxcol=3000
+if &syntax != 'php'
+setlocal syntax=php
+endif
+setlocal tabstop=4
+setlocal tags=
+setlocal textwidth=75
+setlocal thesaurus=
+setlocal noundofile
+setlocal nowinfixheight
+setlocal nowinfixwidth
+setlocal wrap
+setlocal wrapmargin=0
+silent! normal! zE
+11,24fold
+49,53fold
+65,66fold
+78,78fold
+81,81fold
+83,83fold
+76,84fold
+94,101fold
+111,116fold
+120,120fold
+155,155fold
+158,158fold
+129,158fold
+187,187fold
+177,196fold
+204,204fold
+212,215fold
+225,225fold
+236,247fold
+262,264fold
+267,269fold
+272,274fold
+261,275fold
+279,280fold
+285,289fold
+283,290fold
+293,294fold
+297,298fold
+301,302fold
+305,306fold
+309,310fold
+313,313fold
+278,314fold
+259,314fold
+255,316fold
+327,358fold
+324,360fold
+375,376fold
+390,393fold
+397,397fold
+399,399fold
+396,399fold
+389,400fold
+388,401fold
+384,403fold
+381,404fold
+374,407fold
+413,414fold
+412,415fold
+418,420fold
+417,421fold
+426,426fold
+428,428fold
+425,428fold
+424,429fold
+411,431fold
+373,432fold
+370,436fold
+448,449fold
+459,459fold
+458,460fold
+454,461fold
+463,466fold
+451,468fold
+447,469fold
+478,479fold
+477,480fold
+474,481fold
+471,483fold
+446,485fold
+499,499fold
+501,501fold
+504,504fold
+506,506fold
+495,508fold
+528,528fold
+533,533fold
+532,534fold
+527,535fold
+540,540fold
+544,544fold
+543,545fold
+539,546fold
+525,547fold
+523,549fold
+563,564fold
+578,579fold
+577,580fold
+583,584fold
+587,587fold
+572,588fold
+595,595fold
+598,599fold
+592,600fold
+592,600fold
+605,607fold
+613,613fold
+615,615fold
+612,618fold
+604,619fold
+625,627fold
+632,632fold
+634,634fold
+631,637fold
+623,638fold
+643,645fold
+650,652fold
+654,655fold
+649,656fold
+641,657fold
+569,658fold
+562,661fold
+666,667fold
+676,676fold
+673,678fold
+673,678fold
+683,683fold
+685,685fold
+682,688fold
+665,689fold
+695,696fold
+694,697fold
+700,701fold
+699,702fold
+707,707fold
+709,709fold
+706,709fold
+705,710fold
+693,712fold
+561,713fold
+560,714fold
+733,743fold
+732,744fold
+731,746fold
+725,749fold
+766,766fold
+770,770fold
+764,770fold
+774,774fold
+780,781fold
+785,786fold
+789,790fold
+793,794fold
+784,795fold
+799,799fold
+783,799fold
+777,800fold
+805,805fold
+807,807fold
+759,809fold
+823,825fold
+827,828fold
+832,832fold
+834,834fold
+819,836fold
+853,853fold
+855,855fold
+852,855fold
+851,856fold
+849,859fold
+848,862fold
+876,877fold
+879,879fold
+883,883fold
+885,885fold
+888,888fold
+890,890fold
+893,893fold
+895,895fold
+874,897fold
+914,914fold
+910,916fold
+919,919fold
+908,922fold
+941,941fold
+948,948fold
+957,959fold
+956,960fold
+964,966fold
+963,967fold
+979,979fold
+981,981fold
+984,985fold
+987,988fold
+996,1000fold
+995,1001fold
+994,1002fold
+992,1003fold
+977,1004fold
+975,1005fold
+974,1006fold
+970,1010fold
+955,1010fold
+1022,1029fold
+1020,1031fold
+1037,1038fold
+1044,1048fold
+1043,1049fold
+1053,1057fold
+1052,1058fold
+1062,1066fold
+1061,1067fold
+1072,1076fold
+1082,1086fold
+1080,1088fold
+1080,1089fold
+1071,1090fold
+1042,1090fold
+1099,1102fold
+1097,1103fold
+1096,1104fold
+1112,1118fold
+1111,1120fold
+930,1123fold
+1147,1147fold
+1167,1187fold
+1161,1188fold
+1158,1190fold
+1201,1201fold
+1213,1213fold
+1212,1214fold
+1240,1245fold
+1251,1253fold
+1255,1255fold
+1250,1258fold
+1262,1263fold
+1265,1266fold
+1270,1271fold
+1273,1274fold
+1278,1278fold
+1280,1280fold
+1284,1284fold
+1286,1286fold
+1289,1290fold
+1292,1293fold
+1297,1303fold
+1239,1303fold
+36,1311fold
+1325,1332fold
+let s:l = 1 - ((0 * winheight(0) + 27) / 55)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+1
+normal! 0
+let &so = s:so_save | let &siso = s:siso_save
+doautoall SessionLoadPost
+" vim: set ft=vim :

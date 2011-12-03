@@ -1,0 +1,218 @@
+let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
+argglobal
+setlocal keymap=
+setlocal noarabic
+setlocal autoindent
+setlocal nobinary
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
+setlocal nocindent
+setlocal cinkeys=0{,0},0),:,!^F,o,O,e
+setlocal cinoptions=
+setlocal cinwords=if,else,while,do,for,switch
+setlocal colorcolumn=
+setlocal comments=s1:/*,mb:*,ex:*/,://,b:#,:XCOMM,n:>,fb:-
+setlocal commentstring=#%s
+setlocal complete=.,w,b,u,t,i
+setlocal concealcursor=
+setlocal conceallevel=0
+setlocal completefunc=eclim#python#complete#CodeComplete
+setlocal nocopyindent
+setlocal cryptmethod=
+setlocal nocursorbind
+setlocal nocursorcolumn
+setlocal nocursorline
+setlocal define=
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=
+setlocal expandtab
+if &filetype != 'python'
+setlocal filetype=python
+endif
+setlocal foldcolumn=0
+setlocal foldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldmarker={{{,}}}
+setlocal foldmethod=manual
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldtext=foldtext()
+setlocal formatexpr=
+setlocal formatoptions=tcq
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal grepprg=
+setlocal iminsert=0
+setlocal imsearch=0
+setlocal include=s*\\(from\\|import\\)
+setlocal includeexpr=substitute(v:fname,'\\.','/','g')
+setlocal indentexpr=GetPythonIndent(v:lnum)
+setlocal indentkeys=0{,0},:,!^F,o,O,e,<:>,=elif,=except
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255
+setlocal keywordprg=
+setlocal linebreak
+setlocal nolisp
+setlocal nolist
+setlocal makeprg=
+setlocal matchpairs=(:),{:},[:]
+setlocal modeline
+setlocal modifiable
+setlocal nrformats=octal,hex
+setlocal number
+setlocal numberwidth=4
+setlocal omnifunc=pythoncomplete#Complete
+setlocal path=
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal norelativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal shiftwidth=4
+setlocal noshortname
+setlocal nosmartindent
+setlocal softtabstop=4
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en
+setlocal statusline=
+setlocal suffixesadd=.py
+setlocal swapfile
+setlocal synmaxcol=3000
+if &syntax != 'python'
+setlocal syntax=python
+endif
+setlocal tabstop=4
+setlocal tags=
+setlocal textwidth=75
+setlocal thesaurus=
+setlocal noundofile
+setlocal nowinfixheight
+setlocal nowinfixwidth
+setlocal wrap
+setlocal wrapmargin=0
+silent! normal! zE
+62,62fold
+59,64fold
+49,64fold
+73,73fold
+75,75fold
+78,81fold
+77,81fold
+84,84fold
+83,84fold
+86,87fold
+89,90fold
+93,93fold
+92,93fold
+95,95fold
+98,98fold
+100,100fold
+102,102fold
+104,104fold
+106,106fold
+108,108fold
+110,110fold
+112,112fold
+114,114fold
+67,115fold
+119,120fold
+127,127fold
+132,132fold
+131,133fold
+130,134fold
+127,137fold
+123,138fold
+142,143fold
+153,153fold
+153,153fold
+153,153fold
+152,154fold
+158,158fold
+160,160fold
+157,160fold
+172,172fold
+174,174fold
+146,175fold
+180,183fold
+186,186fold
+185,187fold
+190,190fold
+189,191fold
+193,193fold
+195,195fold
+197,197fold
+199,199fold
+201,201fold
+206,206fold
+208,211fold
+204,211fold
+213,214fold
+178,214fold
+217,219fold
+226,226fold
+228,229fold
+222,230fold
+238,238fold
+240,241fold
+233,243fold
+252,253fold
+255,255fold
+260,261fold
+258,261fold
+265,266fold
+268,268fold
+263,269fold
+271,271fold
+246,276fold
+286,287fold
+289,289fold
+296,296fold
+294,298fold
+300,301fold
+305,305fold
+307,308fold
+303,309fold
+279,316fold
+319,319fold
+322,324fold
+332,334fold
+341,341fold
+345,348fold
+328,348fold
+32,348fold
+352,354fold
+358,360fold
+32
+normal zo
+49
+normal zo
+59
+normal zo
+59
+normal zo
+49
+normal zo
+67
+normal zo
+67
+normal zo
+32
+normal zo
+let s:l = 77 - ((51 * winheight(0) + 27) / 55)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+77
+normal! 04l
+let &so = s:so_save | let &siso = s:siso_save
+doautoall SessionLoadPost
+" vim: set ft=vim :

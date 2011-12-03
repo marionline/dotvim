@@ -1,0 +1,309 @@
+let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
+argglobal
+onoremap <buffer> <silent> [[ ?\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)?:nohls
+nnoremap <buffer> <silent> [[ ?\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)?:nohls
+onoremap <buffer> <silent> ]] /\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)/:nohls
+nnoremap <buffer> <silent> ]] /\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)/:nohls
+setlocal keymap=
+setlocal noarabic
+setlocal noautoindent
+setlocal nobinary
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
+setlocal cindent
+setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
+setlocal cinoptions=
+setlocal cinwords=if,else,while,do,for,switch
+setlocal colorcolumn=
+setlocal comments=s1:/*,mb:*,ex:*/,://,:#
+setlocal commentstring=/*%s*/
+setlocal complete=.,w,b,u,t,i
+setlocal concealcursor=
+setlocal conceallevel=0
+setlocal completefunc=eclim#php#complete#CodeComplete
+setlocal nocopyindent
+setlocal cryptmethod=
+setlocal nocursorbind
+setlocal nocursorcolumn
+setlocal nocursorline
+setlocal define=
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=
+setlocal noexpandtab
+if &filetype != 'php'
+setlocal filetype=php
+endif
+setlocal foldcolumn=0
+setlocal foldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldmarker={{{,}}}
+setlocal foldmethod=manual
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldtext=foldtext()
+setlocal formatexpr=
+setlocal formatoptions=cq
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal grepprg=
+setlocal iminsert=0
+setlocal imsearch=0
+setlocal include=\\(require\\|include\\)\\(_once\\)\\?
+setlocal includeexpr=
+setlocal indentexpr=EclimGetPhpHtmlIndent(v:lnum)
+setlocal indentkeys=0{,0},0),:,!^F,o,O,e,*<Return>,=?>,=<?,=*/,<>>,<bs>,{,}
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255
+setlocal keywordprg=
+setlocal linebreak
+setlocal nolisp
+setlocal nolist
+setlocal makeprg=
+setlocal matchpairs=(:),{:},[:],<:>
+setlocal modeline
+setlocal modifiable
+setlocal nrformats=octal,hex
+setlocal number
+setlocal numberwidth=4
+setlocal omnifunc=phpcomplete#CompletePHP
+setlocal path=
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal norelativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal shiftwidth=4
+setlocal noshortname
+setlocal nosmartindent
+setlocal softtabstop=4
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en
+setlocal statusline=
+setlocal suffixesadd=
+setlocal swapfile
+setlocal synmaxcol=3000
+if &syntax != 'php'
+setlocal syntax=php
+endif
+setlocal tabstop=4
+setlocal tags=
+setlocal textwidth=75
+setlocal thesaurus=
+setlocal noundofile
+setlocal nowinfixheight
+setlocal nowinfixwidth
+setlocal wrap
+setlocal wrapmargin=0
+silent! normal! zE
+44,47fold
+61,62fold
+57,65fold
+91,94fold
+97,105fold
+129,129fold
+140,147fold
+167,171fold
+157,174fold
+183,187fold
+176,190fold
+193,195fold
+197,198fold
+202,205fold
+208,213fold
+200,216fold
+233,234fold
+230,235fold
+244,245fold
+254,255fold
+264,265fold
+271,272fold
+287,287fold
+299,304fold
+312,313fold
+317,318fold
+306,320fold
+325,326fold
+347,355fold
+358,359fold
+340,363fold
+379,379fold
+392,393fold
+395,396fold
+398,400fold
+408,412fold
+402,413fold
+417,421fold
+415,423fold
+425,427fold
+429,434fold
+436,441fold
+443,452fold
+454,456fold
+458,460fold
+478,478fold
+481,482fold
+491,492fold
+494,496fold
+498,501fold
+524,525fold
+528,529fold
+548,548fold
+564,567fold
+588,589fold
+593,599fold
+602,605fold
+585,607fold
+44
+normal zo
+57
+normal zo
+61
+normal zo
+57
+normal zo
+91
+normal zc
+97
+normal zc
+129
+normal zo
+140
+normal zo
+157
+normal zo
+167
+normal zc
+157
+normal zc
+176
+normal zo
+183
+normal zc
+176
+normal zc
+193
+normal zc
+197
+normal zc
+200
+normal zo
+202
+normal zc
+208
+normal zc
+200
+normal zc
+230
+normal zo
+233
+normal zc
+230
+normal zc
+244
+normal zc
+254
+normal zc
+264
+normal zc
+271
+normal zc
+287
+normal zc
+299
+normal zc
+306
+normal zo
+312
+normal zc
+317
+normal zc
+306
+normal zc
+325
+normal zc
+340
+normal zo
+347
+normal zc
+358
+normal zc
+340
+normal zc
+379
+normal zc
+392
+normal zo
+395
+normal zo
+398
+normal zo
+402
+normal zo
+408
+normal zo
+402
+normal zo
+415
+normal zo
+417
+normal zo
+415
+normal zo
+425
+normal zo
+429
+normal zo
+436
+normal zc
+443
+normal zo
+454
+normal zo
+458
+normal zo
+478
+normal zc
+481
+normal zo
+491
+normal zo
+494
+normal zo
+498
+normal zo
+524
+normal zc
+528
+normal zc
+548
+normal zc
+564
+normal zo
+585
+normal zo
+588
+normal zc
+593
+normal zc
+602
+normal zc
+585
+normal zc
+let s:l = 455 - ((0 * winheight(0) + 13) / 27)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+455
+normal! 02l
+let &so = s:so_save | let &siso = s:siso_save
+doautoall SessionLoadPost
+" vim: set ft=vim :

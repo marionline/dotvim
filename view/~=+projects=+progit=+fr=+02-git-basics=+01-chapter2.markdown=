@@ -1,0 +1,310 @@
+let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
+argglobal
+setlocal keymap=
+setlocal noarabic
+setlocal autoindent
+setlocal nobinary
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
+setlocal nocindent
+setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
+setlocal cinoptions=
+setlocal cinwords=if,else,while,do,for,switch
+setlocal colorcolumn=
+setlocal comments=fb:*,fb:-,fb:+,n:>
+setlocal commentstring=>\ %s
+setlocal complete=.,w,b,u,t,i
+setlocal concealcursor=
+setlocal conceallevel=0
+setlocal completefunc=eclim#html#complete#CodeComplete
+setlocal nocopyindent
+setlocal cryptmethod=
+setlocal nocursorbind
+setlocal nocursorcolumn
+setlocal nocursorline
+setlocal define=
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=
+setlocal noexpandtab
+if &filetype != 'markdown'
+setlocal filetype=markdown
+endif
+setlocal foldcolumn=0
+setlocal foldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldmarker={{{,}}}
+setlocal foldmethod=manual
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldtext=foldtext()
+setlocal formatexpr=
+setlocal formatoptions=tcqln
+setlocal formatlistpat=^\\s*\\d\\+\\.\\s\\+\\|^[-*+]\\s\\+
+setlocal grepprg=
+setlocal iminsert=0
+setlocal imsearch=0
+setlocal include=
+setlocal includeexpr=
+setlocal indentexpr=
+setlocal indentkeys=0{,0},:,0#,!^F,o,O,e
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255
+setlocal keywordprg=
+setlocal linebreak
+setlocal nolisp
+setlocal nolist
+setlocal makeprg=
+setlocal matchpairs=(:),{:},[:],<:>
+setlocal modeline
+setlocal modifiable
+setlocal nrformats=octal,hex
+setlocal number
+setlocal numberwidth=4
+setlocal omnifunc=htmlcomplete#CompleteTags
+setlocal path=
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal norelativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal shiftwidth=4
+setlocal noshortname
+setlocal nosmartindent
+setlocal softtabstop=0
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en
+setlocal statusline=
+setlocal suffixesadd=
+setlocal swapfile
+setlocal synmaxcol=3000
+if &syntax != 'markdown'
+setlocal syntax=markdown
+endif
+setlocal tabstop=8
+setlocal tags=
+setlocal textwidth=75
+setlocal thesaurus=
+setlocal noundofile
+setlocal nowinfixheight
+setlocal nowinfixwidth
+setlocal wrap
+setlocal wrapmargin=0
+silent! normal! zE
+19,19fold
+19,19fold
+29,31fold
+29,31fold
+49,49fold
+49,49fold
+55,55fold
+55,55fold
+85,87fold
+85,87fold
+98,105fold
+98,105fold
+117,117fold
+117,117fold
+121,121fold
+121,121fold
+138,138fold
+138,138fold
+155,156fold
+155,156fold
+170,171fold
+170,171fold
+190,191fold
+190,191fold
+207,209fold
+207,209fold
+229,233fold
+229,233fold
+243,243fold
+243,243fold
+264,265fold
+264,265fold
+271,273fold
+271,273fold
+258,273fold
+258,273fold
+281,292fold
+281,292fold
+299,301fold
+299,301fold
+315,324fold
+315,324fold
+334,335fold
+334,335fold
+341,343fold
+341,343fold
+328,343fold
+328,343fold
+354,354fold
+354,354fold
+368,371fold
+368,371fold
+381,384fold
+381,384fold
+398,407fold
+398,407fold
+418,419fold
+418,419fold
+430,432fold
+430,432fold
+449,449fold
+449,449fold
+454,454fold
+454,454fold
+461,461fold
+461,461fold
+475,475fold
+475,475fold
+480,481fold
+480,481fold
+493,495fold
+493,495fold
+509,509fold
+509,509fold
+518,518fold
+524,524fold
+530,530fold
+513,530fold
+513,530fold
+547,547fold
+557,557fold
+563,563fold
+570,570fold
+542,578fold
+542,578fold
+591,591fold
+600,600fold
+609,609fold
+586,614fold
+586,614fold
+624,627fold
+624,627fold
+632,635fold
+632,635fold
+639,654fold
+639,654fold
+664,674fold
+664,674fold
+679,688fold
+679,688fold
+700,700fold
+700,700fold
+714,719fold
+714,719fold
+723,730fold
+723,730fold
+758,758fold
+758,758fold
+768,770fold
+768,770fold
+781,782fold
+781,782fold
+795,797fold
+795,797fold
+829,830fold
+829,830fold
+862,871fold
+862,871fold
+875,876fold
+875,876fold
+881,887fold
+881,887fold
+897,902fold
+897,902fold
+907,914fold
+907,914fold
+922,922fold
+922,922fold
+943,943fold
+943,943fold
+959,959fold
+961,962fold
+955,962fold
+955,962fold
+975,975fold
+977,977fold
+979,979fold
+981,982fold
+984,989fold
+991,991fold
+971,991fold
+971,991fold
+1001,1004fold
+1001,1004fold
+1011,1013fold
+1011,1013fold
+1026,1028fold
+1026,1028fold
+1037,1041fold
+1037,1041fold
+1056,1060fold
+1056,1060fold
+1078,1078fold
+1067,1078fold
+1067,1078fold
+1087,1090fold
+1087,1090fold
+1112,1112fold
+1094,1112fold
+1094,1112fold
+1122,1128fold
+1122,1128fold
+1139,1139fold
+1133,1139fold
+1133,1139fold
+1147,1159fold
+1147,1159fold
+1163,1165fold
+1163,1165fold
+1172,1182fold
+1172,1182fold
+1188,1188fold
+1188,1188fold
+1210,1210fold
+1192,1211fold
+1192,1211fold
+1219,1225fold
+1219,1225fold
+1230,1240fold
+1230,1240fold
+1257,1257fold
+1257,1257fold
+1266,1267fold
+1266,1267fold
+1275,1276fold
+1275,1276fold
+1286,1289fold
+1286,1289fold
+1298,1298fold
+1298,1298fold
+1302,1303fold
+1302,1303fold
+1308,1308fold
+1308,1308fold
+1317,1319fold
+1312,1319fold
+1312,1319fold
+1326,1326fold
+1326,1326fold
+let s:l = 78 - ((27 * winheight(0) + 27) / 55)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+78
+normal! 0
+let &so = s:so_save | let &siso = s:siso_save
+doautoall SessionLoadPost
+" vim: set ft=vim :

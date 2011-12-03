@@ -1,0 +1,375 @@
+let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
+argglobal
+setlocal keymap=
+setlocal noarabic
+setlocal autoindent
+setlocal nobinary
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
+setlocal nocindent
+setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
+setlocal cinoptions=
+setlocal cinwords=if,else,while,do,for,switch
+setlocal colorcolumn=
+setlocal comments=s1:/*,mb:*,ex:*/
+setlocal commentstring=/*%s*/
+setlocal complete=.,w,b,u,t,i
+setlocal concealcursor=
+setlocal conceallevel=0
+setlocal completefunc=eclim#css#complete#CodeComplete
+setlocal nocopyindent
+setlocal cryptmethod=
+setlocal nocursorbind
+setlocal nocursorcolumn
+setlocal nocursorline
+setlocal define=
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=
+setlocal noexpandtab
+if &filetype != 'css'
+setlocal filetype=css
+endif
+setlocal foldcolumn=0
+setlocal foldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldmarker={{{,}}}
+setlocal foldmethod=manual
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldtext=foldtext()
+setlocal formatexpr=
+setlocal formatoptions=croql
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal grepprg=
+setlocal iminsert=0
+setlocal imsearch=0
+setlocal include=^\\s*@import\\s\\+\\%(url(\\)\\=
+setlocal includeexpr=
+setlocal indentexpr=EclimGetCssIndent(v:lnum)
+setlocal indentkeys=0{,0},!^F,o,O
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255
+setlocal keywordprg=
+setlocal linebreak
+setlocal nolisp
+setlocal nolist
+setlocal makeprg=
+setlocal matchpairs=(:),{:},[:]
+setlocal modeline
+setlocal modifiable
+setlocal nrformats=octal,hex
+setlocal number
+setlocal numberwidth=4
+setlocal omnifunc=csscomplete#CompleteCSS
+setlocal path=
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal norelativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal shiftwidth=4
+setlocal noshortname
+setlocal smartindent
+setlocal softtabstop=4
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en
+setlocal statusline=
+setlocal suffixesadd=
+setlocal swapfile
+setlocal synmaxcol=3000
+if &syntax != 'css'
+setlocal syntax=css
+endif
+setlocal tabstop=4
+setlocal tags=
+setlocal textwidth=75
+setlocal thesaurus=
+setlocal noundofile
+setlocal nowinfixheight
+setlocal nowinfixwidth
+setlocal wrap
+setlocal wrapmargin=0
+silent! normal! zE
+16,18fold
+22,22fold
+25,29fold
+32,34fold
+38,41fold
+47,52fold
+56,60fold
+64,64fold
+67,67fold
+70,70fold
+73,73fold
+77,77fold
+80,80fold
+83,83fold
+86,86fold
+89,91fold
+108,112fold
+115,120fold
+123,123fold
+126,128fold
+133,137fold
+149,150fold
+154,154fold
+157,157fold
+161,162fold
+165,167fold
+172,173fold
+179,184fold
+187,190fold
+193,197fold
+200,202fold
+205,205fold
+208,209fold
+212,220fold
+223,223fold
+226,229fold
+238,244fold
+248,252fold
+256,257fold
+261,262fold
+266,267fold
+272,273fold
+280,282fold
+285,286fold
+289,291fold
+297,297fold
+300,301fold
+305,315fold
+318,319fold
+322,323fold
+331,332fold
+337,340fold
+345,347fold
+351,351fold
+354,354fold
+357,357fold
+360,360fold
+364,364fold
+368,373fold
+376,376fold
+380,380fold
+383,383fold
+387,388fold
+392,393fold
+397,398fold
+402,402fold
+406,412fold
+415,417fold
+420,421fold
+424,425fold
+429,433fold
+436,440fold
+443,447fold
+451,451fold
+455,456fold
+459,462fold
+465,466fold
+469,472fold
+475,480fold
+484,486fold
+490,491fold
+495,495fold
+498,499fold
+502,502fold
+505,505fold
+509,509fold
+513,514fold
+517,519fold
+16
+normal zc
+22
+normal zc
+25
+normal zc
+32
+normal zc
+38
+normal zc
+47
+normal zc
+56
+normal zc
+64
+normal zc
+67
+normal zc
+70
+normal zc
+73
+normal zc
+77
+normal zc
+80
+normal zc
+83
+normal zc
+86
+normal zc
+89
+normal zc
+108
+normal zc
+115
+normal zc
+123
+normal zc
+126
+normal zc
+133
+normal zc
+149
+normal zc
+154
+normal zc
+157
+normal zc
+161
+normal zc
+165
+normal zc
+172
+normal zc
+179
+normal zc
+187
+normal zc
+193
+normal zo
+200
+normal zc
+205
+normal zc
+208
+normal zc
+212
+normal zc
+223
+normal zc
+226
+normal zc
+238
+normal zc
+248
+normal zc
+256
+normal zc
+261
+normal zc
+266
+normal zc
+272
+normal zc
+280
+normal zc
+285
+normal zc
+289
+normal zc
+297
+normal zc
+300
+normal zc
+305
+normal zo
+318
+normal zc
+322
+normal zc
+331
+normal zc
+337
+normal zc
+345
+normal zc
+351
+normal zc
+354
+normal zc
+357
+normal zc
+360
+normal zc
+364
+normal zc
+368
+normal zc
+376
+normal zc
+380
+normal zc
+383
+normal zc
+387
+normal zc
+392
+normal zc
+397
+normal zc
+402
+normal zc
+406
+normal zc
+415
+normal zc
+420
+normal zc
+424
+normal zc
+429
+normal zc
+436
+normal zc
+443
+normal zc
+451
+normal zc
+455
+normal zc
+459
+normal zc
+465
+normal zc
+469
+normal zc
+475
+normal zc
+484
+normal zc
+490
+normal zc
+495
+normal zc
+498
+normal zc
+502
+normal zc
+505
+normal zc
+509
+normal zc
+513
+normal zc
+517
+normal zc
+let s:l = 310 - ((40 * winheight(0) + 27) / 55)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+310
+normal! 022l
+let &so = s:so_save | let &siso = s:siso_save
+doautoall SessionLoadPost
+" vim: set ft=vim :

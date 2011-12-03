@@ -1,0 +1,1914 @@
+let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
+argglobal
+setlocal keymap=
+setlocal noarabic
+setlocal autoindent
+setlocal nobinary
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
+setlocal cindent
+setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
+setlocal cinoptions=
+setlocal cinwords=if,else,while,do,for,switch
+setlocal colorcolumn=
+setlocal comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,://
+setlocal commentstring=/*%s*/
+setlocal complete=.,w,b,u,t,i
+setlocal concealcursor=
+setlocal conceallevel=0
+setlocal completefunc=eclim#c#complete#CodeComplete
+setlocal nocopyindent
+setlocal cryptmethod=
+setlocal nocursorbind
+setlocal nocursorcolumn
+setlocal nocursorline
+setlocal define=
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=
+setlocal noexpandtab
+if &filetype != 'c'
+setlocal filetype=c
+endif
+setlocal foldcolumn=0
+setlocal foldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldmarker={{{,}}}
+setlocal foldmethod=manual
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldtext=foldtext()
+setlocal formatexpr=
+setlocal formatoptions=croql
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal grepprg=
+setlocal iminsert=0
+setlocal imsearch=0
+setlocal include=
+setlocal includeexpr=
+setlocal indentexpr=
+setlocal indentkeys=0{,0},:,0#,!^F,o,O,e
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255
+setlocal keywordprg=
+setlocal linebreak
+setlocal nolisp
+setlocal nolist
+setlocal makeprg=
+setlocal matchpairs=(:),{:},[:]
+setlocal modeline
+setlocal modifiable
+setlocal nrformats=octal,hex
+setlocal number
+setlocal numberwidth=4
+setlocal omnifunc=ccomplete#Complete
+setlocal path=
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal norelativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal shiftwidth=4
+setlocal noshortname
+setlocal nosmartindent
+setlocal softtabstop=4
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en
+setlocal statusline=
+setlocal suffixesadd=
+setlocal swapfile
+setlocal synmaxcol=3000
+if &syntax != 'c'
+setlocal syntax=c
+endif
+setlocal tabstop=4
+setlocal tags=
+setlocal textwidth=75
+setlocal thesaurus=
+setlocal noundofile
+setlocal nowinfixheight
+setlocal nowinfixwidth
+setlocal wrap
+setlocal wrapmargin=0
+silent! normal! zE
+8,15fold
+74,74fold
+73,77fold
+85,85fold
+109,109fold
+108,112fold
+117,118fold
+82,119fold
+122,122fold
+131,131fold
+133,133fold
+135,135fold
+130,135fold
+127,139fold
+146,147fold
+145,148fold
+154,154fold
+157,157fold
+159,159fold
+161,161fold
+163,163fold
+165,165fold
+167,167fold
+169,169fold
+171,171fold
+173,173fold
+175,175fold
+177,177fold
+179,179fold
+182,182fold
+153,183fold
+188,188fold
+213,213fold
+212,213fold
+211,214fold
+200,217fold
+194,220fold
+223,223fold
+227,227fold
+227,227fold
+227,227fold
+227,227fold
+233,233fold
+233,233fold
+237,237fold
+243,245fold
+242,245fold
+236,246fold
+229,249fold
+253,256fold
+253,256fold
+253,256fold
+266,266fold
+266,266fold
+273,273fold
+273,273fold
+273,273fold
+273,273fold
+273,273fold
+276,276fold
+278,278fold
+280,280fold
+282,282fold
+285,285fold
+258,293fold
+297,301fold
+297,301fold
+308,308fold
+312,313fold
+312,313fold
+312,313fold
+315,315fold
+323,323fold
+323,323fold
+321,323fold
+326,326fold
+303,332fold
+335,335fold
+340,344fold
+340,344fold
+340,344fold
+351,351fold
+355,356fold
+355,356fold
+355,356fold
+358,358fold
+367,367fold
+367,367fold
+365,367fold
+370,370fold
+346,381fold
+384,384fold
+389,389fold
+389,389fold
+389,389fold
+389,389fold
+401,401fold
+409,409fold
+409,409fold
+409,409fold
+409,409fold
+411,411fold
+414,418fold
+421,421fold
+424,433fold
+436,439fold
+436,439fold
+443,443fold
+447,447fold
+451,451fold
+442,453fold
+455,456fold
+460,460fold
+471,471fold
+476,476fold
+480,480fold
+392,482fold
+486,486fold
+488,488fold
+490,490fold
+485,490fold
+493,493fold
+498,498fold
+498,498fold
+498,498fold
+507,507fold
+509,509fold
+515,515fold
+519,519fold
+524,524fold
+524,524fold
+524,524fold
+524,524fold
+524,524fold
+528,528fold
+541,541fold
+541,541fold
+541,541fold
+541,543fold
+539,544fold
+548,548fold
+548,548fold
+548,550fold
+546,551fold
+553,555fold
+560,561fold
+565,566fold
+573,573fold
+573,573fold
+573,573fold
+573,575fold
+500,576fold
+581,581fold
+583,583fold
+580,583fold
+586,586fold
+591,591fold
+591,591fold
+591,591fold
+591,591fold
+601,601fold
+604,604fold
+610,615fold
+609,615fold
+618,622fold
+617,622fold
+608,622fold
+628,634fold
+627,634fold
+637,641fold
+636,641fold
+626,641fold
+644,644fold
+648,648fold
+656,659fold
+655,659fold
+662,664fold
+661,664fold
+651,664fold
+669,673fold
+668,673fold
+676,678fold
+675,678fold
+667,678fold
+686,686fold
+696,696fold
+700,700fold
+693,701fold
+683,702fold
+593,706fold
+710,710fold
+709,711fold
+714,715fold
+724,724fold
+727,727fold
+731,731fold
+736,736fold
+720,738fold
+741,741fold
+749,749fold
+752,752fold
+746,758fold
+762,762fold
+762,762fold
+762,762fold
+762,762fold
+767,767fold
+770,770fold
+764,773fold
+776,776fold
+780,781fold
+780,781fold
+780,781fold
+786,786fold
+791,791fold
+793,793fold
+790,795fold
+789,796fold
+783,797fold
+800,800fold
+804,804fold
+804,804fold
+804,804fold
+810,810fold
+813,813fold
+816,816fold
+816,816fold
+818,818fold
+823,823fold
+827,827fold
+833,833fold
+849,850fold
+838,851fold
+806,852fold
+855,856fold
+860,861fold
+859,864fold
+872,872fold
+875,875fold
+878,878fold
+882,882fold
+869,886fold
+889,889fold
+893,893fold
+893,893fold
+893,893fold
+893,893fold
+893,893fold
+900,900fold
+903,903fold
+907,907fold
+911,911fold
+915,916fold
+925,925fold
+923,925fold
+930,931fold
+896,932fold
+935,936fold
+940,940fold
+947,947fold
+946,947fold
+953,953fold
+952,968fold
+974,974fold
+997,997fold
+996,999fold
+1002,1002fold
+973,1003fold
+1010,1010fold
+1013,1013fold
+1008,1015fold
+1022,1025fold
+1022,1025fold
+1032,1034fold
+1032,1034fold
+1037,1037fold
+1040,1040fold
+1043,1043fold
+1045,1045fold
+1047,1047fold
+1056,1056fold
+1065,1065fold
+1070,1070fold
+1072,1072fold
+1078,1084fold
+1078,1084fold
+1078,1084fold
+1087,1088fold
+1076,1089fold
+1093,1099fold
+1093,1099fold
+1093,1099fold
+1105,1105fold
+1101,1107fold
+1091,1108fold
+1110,1110fold
+1114,1115fold
+1119,1119fold
+1126,1132fold
+1126,1132fold
+1125,1132fold
+1135,1141fold
+1135,1141fold
+1134,1141fold
+1143,1143fold
+1148,1148fold
+1150,1153fold
+1147,1153fold
+1146,1155fold
+1027,1156fold
+1161,1161fold
+1163,1163fold
+1160,1163fold
+1166,1166fold
+1170,1171fold
+1170,1171fold
+1170,1171fold
+1177,1177fold
+1181,1181fold
+1184,1185fold
+1184,1185fold
+1187,1187fold
+1192,1192fold
+1194,1194fold
+1191,1194fold
+1199,1199fold
+1203,1203fold
+1208,1208fold
+1173,1210fold
+1213,1214fold
+1218,1218fold
+1217,1218fold
+1221,1221fold
+1225,1225fold
+1225,1225fold
+1225,1225fold
+1231,1231fold
+1239,1239fold
+1244,1249fold
+1244,1249fold
+1257,1257fold
+1252,1259fold
+1264,1265fold
+1268,1268fold
+1271,1276fold
+1271,1276fold
+1227,1276fold
+1283,1283fold
+1279,1283fold
+1287,1287fold
+1292,1293fold
+1292,1293fold
+1292,1293fold
+1300,1300fold
+1304,1304fold
+1307,1310fold
+1307,1310fold
+1312,1312fold
+1317,1317fold
+1319,1319fold
+1316,1319fold
+1324,1324fold
+1328,1328fold
+1333,1333fold
+1296,1335fold
+1338,1339fold
+1343,1343fold
+1342,1343fold
+1346,1346fold
+1354,1354fold
+1353,1354fold
+1351,1356fold
+1369,1369fold
+1377,1377fold
+1381,1381fold
+1383,1383fold
+1363,1386fold
+1395,1395fold
+1395,1395fold
+1407,1407fold
+1411,1411fold
+1416,1416fold
+1421,1421fold
+1423,1423fold
+1423,1423fold
+1423,1423fold
+1423,1423fold
+1425,1425fold
+1434,1435fold
+1438,1439fold
+1443,1443fold
+1419,1443fold
+1448,1448fold
+1446,1448fold
+1459,1459fold
+1463,1463fold
+1465,1465fold
+1456,1465fold
+1471,1471fold
+1474,1474fold
+1481,1481fold
+1483,1483fold
+1470,1483fold
+1492,1492fold
+1496,1496fold
+1397,1496fold
+1501,1501fold
+1503,1503fold
+1505,1505fold
+1507,1507fold
+1509,1509fold
+1500,1509fold
+1512,1512fold
+1520,1520fold
+1523,1523fold
+1527,1527fold
+1518,1527fold
+1530,1530fold
+1537,1537fold
+1540,1540fold
+1544,1544fold
+1535,1544fold
+1547,1547fold
+1554,1554fold
+1553,1556fold
+1563,1563fold
+1562,1564fold
+1567,1567fold
+1566,1567fold
+1561,1569fold
+1576,1576fold
+1579,1579fold
+1581,1581fold
+1584,1584fold
+1583,1584fold
+1575,1584fold
+1589,1589fold
+1589,1589fold
+1595,1595fold
+1605,1605fold
+1608,1608fold
+1608,1608fold
+1611,1611fold
+1614,1614fold
+1591,1614fold
+1617,1617fold
+1623,1623fold
+1622,1625fold
+1631,1631fold
+1630,1633fold
+1640,1640fold
+1639,1642fold
+1648,1648fold
+1647,1650fold
+1657,1657fold
+1656,1659fold
+1666,1666fold
+1665,1668fold
+1675,1675fold
+1674,1677fold
+1684,1684fold
+1683,1686fold
+1692,1692fold
+1691,1694fold
+1699,1699fold
+1705,1705fold
+1704,1707fold
+1713,1713fold
+1712,1715fold
+1721,1721fold
+1720,1723fold
+1729,1729fold
+1728,1731fold
+1737,1737fold
+1736,1739fold
+8
+normal zo
+73
+normal zo
+74
+normal zc
+73
+normal zo
+82
+normal zo
+85
+normal zc
+108
+normal zo
+109
+normal zc
+108
+normal zc
+117
+normal zc
+82
+normal zo
+122
+normal zc
+127
+normal zo
+130
+normal zo
+131
+normal zc
+133
+normal zc
+135
+normal zc
+130
+normal zo
+127
+normal zo
+145
+normal zo
+146
+normal zo
+145
+normal zo
+153
+normal zo
+154
+normal zc
+157
+normal zc
+159
+normal zc
+161
+normal zc
+163
+normal zc
+165
+normal zc
+167
+normal zc
+169
+normal zc
+171
+normal zc
+173
+normal zc
+175
+normal zc
+177
+normal zc
+179
+normal zc
+182
+normal zc
+153
+normal zo
+188
+normal zc
+194
+normal zo
+200
+normal zo
+211
+normal zo
+212
+normal zo
+213
+normal zc
+212
+normal zc
+211
+normal zc
+200
+normal zc
+194
+normal zc
+223
+normal zc
+227
+normal zo
+227
+normal zo
+227
+normal zo
+227
+normal zc
+227
+normal zc
+227
+normal zc
+227
+normal zc
+229
+normal zo
+233
+normal zo
+233
+normal zc
+233
+normal zc
+236
+normal zo
+237
+normal zc
+242
+normal zo
+243
+normal zc
+242
+normal zc
+236
+normal zc
+229
+normal zc
+253
+normal zo
+253
+normal zo
+253
+normal zc
+253
+normal zc
+253
+normal zc
+258
+normal zo
+266
+normal zo
+266
+normal zc
+266
+normal zc
+273
+normal zo
+273
+normal zo
+273
+normal zo
+273
+normal zo
+273
+normal zc
+273
+normal zc
+273
+normal zc
+273
+normal zc
+273
+normal zc
+276
+normal zc
+278
+normal zc
+280
+normal zc
+282
+normal zc
+285
+normal zc
+258
+normal zc
+297
+normal zo
+297
+normal zc
+297
+normal zc
+303
+normal zo
+308
+normal zc
+312
+normal zo
+312
+normal zo
+312
+normal zc
+312
+normal zc
+312
+normal zc
+315
+normal zc
+321
+normal zo
+323
+normal zo
+323
+normal zc
+323
+normal zc
+321
+normal zc
+326
+normal zc
+303
+normal zc
+335
+normal zc
+340
+normal zo
+340
+normal zo
+340
+normal zc
+340
+normal zc
+340
+normal zc
+346
+normal zo
+351
+normal zc
+355
+normal zo
+355
+normal zo
+355
+normal zc
+355
+normal zc
+355
+normal zc
+358
+normal zc
+365
+normal zo
+367
+normal zo
+367
+normal zc
+367
+normal zc
+365
+normal zc
+370
+normal zc
+346
+normal zc
+384
+normal zc
+389
+normal zo
+389
+normal zo
+389
+normal zo
+389
+normal zc
+389
+normal zc
+389
+normal zc
+389
+normal zc
+392
+normal zo
+401
+normal zc
+409
+normal zo
+409
+normal zo
+409
+normal zo
+409
+normal zc
+409
+normal zc
+409
+normal zc
+409
+normal zc
+411
+normal zc
+414
+normal zc
+421
+normal zc
+424
+normal zc
+436
+normal zo
+436
+normal zc
+436
+normal zc
+442
+normal zo
+443
+normal zc
+447
+normal zc
+451
+normal zc
+442
+normal zc
+455
+normal zc
+460
+normal zc
+471
+normal zc
+476
+normal zc
+480
+normal zc
+392
+normal zc
+485
+normal zo
+486
+normal zc
+488
+normal zc
+490
+normal zc
+485
+normal zc
+493
+normal zc
+498
+normal zo
+498
+normal zo
+498
+normal zc
+498
+normal zc
+498
+normal zc
+500
+normal zo
+507
+normal zc
+509
+normal zc
+515
+normal zc
+519
+normal zc
+524
+normal zo
+524
+normal zo
+524
+normal zo
+524
+normal zo
+524
+normal zc
+524
+normal zc
+524
+normal zc
+524
+normal zc
+524
+normal zc
+528
+normal zc
+539
+normal zo
+541
+normal zo
+541
+normal zo
+541
+normal zo
+541
+normal zc
+541
+normal zc
+541
+normal zc
+541
+normal zc
+539
+normal zc
+546
+normal zo
+548
+normal zo
+548
+normal zo
+548
+normal zc
+548
+normal zc
+548
+normal zc
+546
+normal zc
+553
+normal zc
+560
+normal zc
+565
+normal zc
+573
+normal zo
+573
+normal zo
+573
+normal zo
+573
+normal zc
+573
+normal zc
+573
+normal zc
+573
+normal zc
+500
+normal zc
+580
+normal zo
+581
+normal zc
+583
+normal zc
+580
+normal zc
+586
+normal zc
+591
+normal zo
+591
+normal zo
+591
+normal zo
+591
+normal zc
+591
+normal zc
+591
+normal zc
+591
+normal zc
+593
+normal zo
+601
+normal zc
+604
+normal zc
+608
+normal zo
+609
+normal zo
+610
+normal zc
+609
+normal zc
+617
+normal zo
+618
+normal zc
+617
+normal zc
+608
+normal zc
+626
+normal zo
+627
+normal zo
+628
+normal zc
+627
+normal zc
+636
+normal zo
+637
+normal zc
+636
+normal zc
+626
+normal zc
+644
+normal zc
+648
+normal zc
+651
+normal zo
+655
+normal zo
+656
+normal zc
+655
+normal zc
+661
+normal zo
+662
+normal zc
+661
+normal zc
+651
+normal zc
+667
+normal zo
+668
+normal zo
+669
+normal zc
+668
+normal zc
+675
+normal zo
+676
+normal zc
+675
+normal zc
+667
+normal zc
+683
+normal zo
+686
+normal zc
+693
+normal zo
+696
+normal zc
+700
+normal zc
+693
+normal zc
+683
+normal zc
+593
+normal zc
+709
+normal zo
+710
+normal zc
+709
+normal zc
+714
+normal zc
+720
+normal zo
+724
+normal zc
+727
+normal zc
+731
+normal zc
+736
+normal zc
+720
+normal zc
+741
+normal zc
+746
+normal zo
+749
+normal zc
+752
+normal zc
+746
+normal zc
+762
+normal zo
+762
+normal zo
+762
+normal zo
+762
+normal zc
+762
+normal zc
+762
+normal zc
+762
+normal zc
+764
+normal zo
+767
+normal zc
+770
+normal zc
+764
+normal zc
+776
+normal zc
+780
+normal zo
+780
+normal zo
+780
+normal zc
+780
+normal zc
+780
+normal zc
+783
+normal zo
+786
+normal zc
+789
+normal zo
+790
+normal zo
+791
+normal zc
+793
+normal zc
+790
+normal zc
+789
+normal zc
+783
+normal zc
+800
+normal zc
+804
+normal zo
+804
+normal zo
+804
+normal zc
+804
+normal zc
+804
+normal zc
+806
+normal zo
+810
+normal zc
+813
+normal zc
+816
+normal zo
+816
+normal zc
+816
+normal zc
+818
+normal zc
+823
+normal zc
+827
+normal zc
+833
+normal zc
+838
+normal zo
+849
+normal zc
+838
+normal zc
+806
+normal zc
+855
+normal zc
+859
+normal zo
+860
+normal zc
+859
+normal zc
+869
+normal zo
+872
+normal zc
+875
+normal zc
+878
+normal zc
+882
+normal zc
+869
+normal zc
+889
+normal zc
+893
+normal zo
+893
+normal zo
+893
+normal zo
+893
+normal zo
+893
+normal zc
+893
+normal zc
+893
+normal zc
+893
+normal zc
+893
+normal zc
+896
+normal zo
+900
+normal zc
+903
+normal zc
+907
+normal zc
+911
+normal zc
+915
+normal zc
+923
+normal zo
+925
+normal zc
+923
+normal zc
+930
+normal zc
+896
+normal zc
+935
+normal zc
+940
+normal zc
+946
+normal zo
+947
+normal zc
+946
+normal zc
+952
+normal zo
+953
+normal zc
+952
+normal zc
+973
+normal zo
+974
+normal zc
+996
+normal zo
+997
+normal zc
+996
+normal zc
+1002
+normal zc
+973
+normal zc
+1008
+normal zo
+1010
+normal zc
+1013
+normal zc
+1008
+normal zc
+1022
+normal zo
+1022
+normal zc
+1022
+normal zc
+1027
+normal zo
+1032
+normal zo
+1032
+normal zc
+1032
+normal zc
+1037
+normal zc
+1040
+normal zc
+1043
+normal zc
+1045
+normal zc
+1047
+normal zc
+1056
+normal zc
+1065
+normal zc
+1070
+normal zc
+1072
+normal zc
+1076
+normal zo
+1078
+normal zo
+1078
+normal zo
+1078
+normal zc
+1078
+normal zc
+1078
+normal zc
+1087
+normal zc
+1076
+normal zc
+1091
+normal zo
+1093
+normal zo
+1093
+normal zo
+1093
+normal zc
+1093
+normal zc
+1093
+normal zc
+1101
+normal zo
+1105
+normal zc
+1101
+normal zc
+1091
+normal zc
+1110
+normal zc
+1114
+normal zc
+1119
+normal zc
+1125
+normal zo
+1126
+normal zo
+1126
+normal zc
+1126
+normal zc
+1125
+normal zc
+1134
+normal zo
+1135
+normal zo
+1135
+normal zc
+1135
+normal zc
+1134
+normal zc
+1143
+normal zc
+1146
+normal zo
+1147
+normal zo
+1148
+normal zc
+1150
+normal zc
+1147
+normal zc
+1146
+normal zc
+1027
+normal zc
+1160
+normal zo
+1161
+normal zc
+1163
+normal zc
+1160
+normal zc
+1166
+normal zc
+1170
+normal zo
+1170
+normal zo
+1170
+normal zc
+1170
+normal zc
+1170
+normal zc
+1173
+normal zo
+1177
+normal zc
+1181
+normal zc
+1184
+normal zo
+1184
+normal zc
+1184
+normal zc
+1187
+normal zc
+1191
+normal zo
+1192
+normal zc
+1194
+normal zc
+1191
+normal zc
+1199
+normal zc
+1203
+normal zc
+1208
+normal zc
+1173
+normal zc
+1213
+normal zc
+1217
+normal zo
+1218
+normal zc
+1217
+normal zc
+1221
+normal zc
+1225
+normal zo
+1225
+normal zo
+1225
+normal zc
+1225
+normal zc
+1225
+normal zc
+1227
+normal zo
+1231
+normal zc
+1239
+normal zc
+1244
+normal zo
+1244
+normal zc
+1244
+normal zc
+1252
+normal zo
+1257
+normal zc
+1252
+normal zc
+1264
+normal zc
+1268
+normal zc
+1271
+normal zo
+1271
+normal zc
+1271
+normal zc
+1227
+normal zc
+1279
+normal zo
+1283
+normal zc
+1279
+normal zc
+1287
+normal zc
+1292
+normal zo
+1292
+normal zo
+1292
+normal zc
+1292
+normal zc
+1292
+normal zc
+1296
+normal zo
+1300
+normal zc
+1304
+normal zc
+1307
+normal zo
+1307
+normal zc
+1307
+normal zc
+1312
+normal zc
+1316
+normal zo
+1317
+normal zc
+1319
+normal zc
+1316
+normal zc
+1324
+normal zc
+1328
+normal zc
+1333
+normal zc
+1296
+normal zc
+1338
+normal zc
+1342
+normal zo
+1343
+normal zc
+1342
+normal zc
+1346
+normal zc
+1351
+normal zo
+1353
+normal zo
+1354
+normal zc
+1353
+normal zc
+1351
+normal zc
+1363
+normal zo
+1369
+normal zc
+1377
+normal zc
+1381
+normal zc
+1383
+normal zc
+1363
+normal zc
+1395
+normal zo
+1395
+normal zc
+1395
+normal zc
+1397
+normal zo
+1407
+normal zc
+1411
+normal zc
+1416
+normal zc
+1419
+normal zo
+1421
+normal zc
+1423
+normal zo
+1423
+normal zo
+1423
+normal zo
+1423
+normal zc
+1423
+normal zc
+1423
+normal zc
+1423
+normal zc
+1425
+normal zc
+1434
+normal zc
+1438
+normal zc
+1443
+normal zc
+1419
+normal zc
+1446
+normal zo
+1448
+normal zc
+1446
+normal zc
+1456
+normal zo
+1459
+normal zc
+1463
+normal zc
+1465
+normal zc
+1456
+normal zc
+1470
+normal zo
+1471
+normal zc
+1474
+normal zc
+1481
+normal zc
+1483
+normal zc
+1470
+normal zc
+1492
+normal zc
+1496
+normal zc
+1397
+normal zc
+1500
+normal zo
+1501
+normal zc
+1503
+normal zc
+1505
+normal zc
+1507
+normal zc
+1509
+normal zc
+1500
+normal zc
+1512
+normal zc
+1518
+normal zo
+1520
+normal zc
+1523
+normal zc
+1527
+normal zc
+1518
+normal zc
+1530
+normal zc
+1535
+normal zo
+1537
+normal zc
+1540
+normal zc
+1544
+normal zc
+1535
+normal zc
+1547
+normal zc
+1553
+normal zo
+1554
+normal zc
+1553
+normal zc
+1561
+normal zo
+1562
+normal zo
+1563
+normal zc
+1562
+normal zc
+1566
+normal zo
+1567
+normal zc
+1566
+normal zc
+1561
+normal zc
+1575
+normal zo
+1576
+normal zc
+1579
+normal zc
+1581
+normal zc
+1583
+normal zo
+1584
+normal zc
+1583
+normal zc
+1575
+normal zc
+1589
+normal zo
+1589
+normal zc
+1589
+normal zc
+1591
+normal zo
+1595
+normal zc
+1605
+normal zc
+1608
+normal zo
+1608
+normal zc
+1608
+normal zc
+1611
+normal zc
+1614
+normal zc
+1591
+normal zc
+1617
+normal zc
+1622
+normal zo
+1623
+normal zc
+1622
+normal zc
+1630
+normal zo
+1631
+normal zc
+1630
+normal zc
+1639
+normal zo
+1640
+normal zc
+1639
+normal zc
+1647
+normal zo
+1648
+normal zc
+1647
+normal zc
+1656
+normal zo
+1657
+normal zc
+1656
+normal zc
+1665
+normal zo
+1666
+normal zc
+1665
+normal zc
+1674
+normal zo
+1675
+normal zc
+1674
+normal zc
+1683
+normal zo
+1684
+normal zc
+1683
+normal zc
+1691
+normal zo
+1692
+normal zc
+1691
+normal zc
+1699
+normal zc
+1704
+normal zo
+1705
+normal zc
+1704
+normal zc
+1712
+normal zo
+1713
+normal zc
+1712
+normal zc
+1720
+normal zo
+1721
+normal zc
+1720
+normal zc
+1728
+normal zo
+1729
+normal zc
+1728
+normal zc
+1736
+normal zo
+1737
+normal zc
+1736
+normal zc
+let s:l = 40 - ((25 * winheight(0) + 27) / 55)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+40
+normal! 01l
+let &so = s:so_save | let &siso = s:siso_save
+doautoall SessionLoadPost
+" vim: set ft=vim :

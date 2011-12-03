@@ -1,0 +1,304 @@
+let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
+argglobal
+let s:cpo_save=&cpo
+set cpo&vim
+imap <buffer> <silent> <F9> :call BASH_Debugger():redraw!
+nmap <buffer> <silent> <NL> i=BASH_JumpCtrlJ()
+nnoremap <buffer> "" ciW""P
+nnoremap <buffer> '' ciW''P
+nnoremap <buffer> <silent> \cl :call BASH_LineEndComment()
+nnoremap <buffer> <silent> \cj :call BASH_AdjustLineEndComm("a")
+nnoremap <buffer> <silent> \cc :call BASH_CommentToggle()j
+nnoremap <buffer> <silent> \cd :call BASH_InsertDateAndTime('d')
+nnoremap <buffer> <silent> \ct :call BASH_InsertDateAndTime('dt')
+nnoremap <buffer> <silent> \sf :call BASH_InsertTemplate("statements.for-in")
+nnoremap <buffer> <silent> \sfo :call BASH_InsertTemplate("statements.for")
+nnoremap <buffer> <silent> \si :call BASH_InsertTemplate("statements.if")
+nnoremap <buffer> <silent> \sie :call BASH_InsertTemplate("statements.if-else")
+nnoremap <buffer> <silent> \ss :call BASH_InsertTemplate("statements.select")
+nnoremap <buffer> <silent> \st :call BASH_InsertTemplate("statements.until")
+nnoremap <buffer> <silent> \sw :call BASH_InsertTemplate("statements.while")
+nnoremap <buffer> <silent> \sfu :call BASH_InsertTemplate("statements.function")
+nnoremap <buffer> <silent> \sp :call BASH_InsertTemplate("statements.printf")
+nnoremap <buffer> <silent> \se :call BASH_InsertTemplate("statements.echo")
+nnoremap <buffer> <silent> \sa a${[]}<Left><Left><Left>
+nnoremap <buffer> <silent> \saa a${[@]}<Left><Left><Left><Left>
+nnoremap <buffer> <silent> \sa1 a${[*]}<Left><Left><Left><Left>
+nnoremap <buffer> <silent> \san a${#[@]}<Left><Left><Left><Left>
+nnoremap <buffer> <silent> \sai a${![*]}<Left><Left><Left><Left>
+nnoremap <buffer> <silent> \nw :call BASH_CodeSnippets("w")
+nmap <buffer> <silent> \rr :call BASH_Run("n")
+nmap <buffer> <silent> \rh :call BASH_Hardcopy("n")
+map <buffer> <silent> \ro :call BASH_Toggle_Gvim_Xterm()
+map <buffer> <silent> \rs :call BASH_Settings()
+vmap <buffer> <silent> \rh :call BASH_Hardcopy("v")
+omap <buffer> <silent> \rh :call BASH_Hardcopy("n")
+vmap <buffer> <silent> \rr :call BASH_Run("v")
+map <buffer> <silent> \rd :call BASH_Debugger():redraw!
+map <buffer> <silent> \re :call BASH_MakeScriptExecutable()
+map <buffer> <silent> \rco :call BASH_SyntaxCheckOptionsLocal()
+map <buffer> <silent> \rc :call BASH_SyntaxCheck()
+map <buffer> <silent> \ra :call BASH_CmdLineArguments()
+omap <buffer> <silent> \rr :call BASH_Run("n")
+nnoremap <buffer> <silent> \t2 a[  -  ]<Left><Left><Left><Left><Left>
+nnoremap <buffer> <silent> \t a[ -  ]<Left><Left><Left>
+noremap <buffer> \nts :BashStyle 
+noremap <buffer> <silent> \ntr :call BASH_RereadTemplates()
+noremap <buffer> <silent> \ntg :call BASH_EditTemplates("global")
+noremap <buffer> <silent> \ntl :call BASH_EditTemplates("local")
+noremap <buffer> <silent> \ne :call BASH_CodeSnippets("e")
+vnoremap <buffer> <silent> \nw :call BASH_CodeSnippets("wv")
+onoremap <buffer> <silent> \nw :call BASH_CodeSnippets("w")
+noremap <buffer> <silent> \nr :call BASH_CodeSnippets("r")
+nnoremap <buffer> <silent> \px a[:xdigit:]
+nnoremap <buffer> <silent> \pw a[:word:]
+nnoremap <buffer> <silent> \pu a[:upper:]
+nnoremap <buffer> <silent> \ps a[:space:]
+nnoremap <buffer> <silent> \ppu a[:punct:]
+nnoremap <buffer> <silent> \ppr a[:print:]
+nnoremap <buffer> <silent> \pl a[:lower:]
+nnoremap <buffer> <silent> \pg a[:graph:]
+nnoremap <buffer> <silent> \pd a[:digit:]
+nnoremap <buffer> <silent> \pc a[:cntrl:]
+nnoremap <buffer> <silent> \pb a[:blank:]
+nnoremap <buffer> <silent> \pas a[:ascii:]
+nnoremap <buffer> <silent> \pal a[:alpha:]
+nnoremap <buffer> <silent> \pan a[:alnum:]
+nnoremap <buffer> <silent> \xm a[[  =~  ]]<Left><Left><Left><Left><Left><Left><Left>
+vnoremap <buffer> <silent> \sai s${![*]}<Left><Left><Left>P
+onoremap <buffer> <silent> \sai a${![*]}<Left><Left><Left><Left>
+vnoremap <buffer> <silent> \san s${#[@]}<Left><Left><Left>P
+onoremap <buffer> <silent> \san a${#[@]}<Left><Left><Left><Left>
+vnoremap <buffer> <silent> \sa1 s${[*]}<Left><Left><Left>P
+onoremap <buffer> <silent> \sa1 a${[*]}<Left><Left><Left><Left>
+vnoremap <buffer> <silent> \saa s${[@]}<Left><Left><Left>P
+onoremap <buffer> <silent> \saa a${[@]}<Left><Left><Left><Left>
+vnoremap <buffer> <silent> \sa s${[]}<Left><Left>P
+onoremap <buffer> <silent> \sa a${[]}<Left><Left><Left>
+vnoremap <buffer> <silent> \se :call BASH_InsertTemplate("statements.echo", "v")
+onoremap <buffer> <silent> \se :call BASH_InsertTemplate("statements.echo")
+vnoremap <buffer> <silent> \sp :call BASH_InsertTemplate("statements.printf", "v")
+onoremap <buffer> <silent> \sp :call BASH_InsertTemplate("statements.printf")
+vnoremap <buffer> <silent> \sfu :call BASH_InsertTemplate("statements.function", "v")
+onoremap <buffer> <silent> \sfu :call BASH_InsertTemplate("statements.function")
+vnoremap <buffer> <silent> \sw :call BASH_InsertTemplate("statements.while", "v")
+vnoremap <buffer> <silent> \st :call BASH_InsertTemplate("statements.until", "v")
+vnoremap <buffer> <silent> \ss :call BASH_InsertTemplate("statements.select", "v")
+vnoremap <buffer> <silent> \sie :call BASH_InsertTemplate("statements.if-else", "v")
+vnoremap <buffer> <silent> \si :call BASH_InsertTemplate("statements.if", "v")
+vnoremap <buffer> <silent> \sfo :call BASH_InsertTemplate("statements.for", "v")
+vnoremap <buffer> <silent> \sf :call BASH_InsertTemplate("statements.for-in", "v")
+onoremap <buffer> <silent> \sw :call BASH_InsertTemplate("statements.while")
+onoremap <buffer> <silent> \st :call BASH_InsertTemplate("statements.until")
+onoremap <buffer> <silent> \ss :call BASH_InsertTemplate("statements.select")
+onoremap <buffer> <silent> \sie :call BASH_InsertTemplate("statements.if-else")
+onoremap <buffer> <silent> \si :call BASH_InsertTemplate("statements.if")
+onoremap <buffer> <silent> \sfo :call BASH_InsertTemplate("statements.for")
+onoremap <buffer> <silent> \sf :call BASH_InsertTemplate("statements.for-in")
+noremap <buffer> <silent> \sei :call BASH_InsertTemplate("statements.elif")
+noremap <buffer> <silent> \sc :call BASH_InsertTemplate("statements.case")
+noremap <buffer> <silent> \cv :call BASH_CommentVimModeline()
+noremap <buffer> <silent> \cr 0:s/^\s*echo\s\+\"// | s/\s*\"\s*$// | :normal ==j'
+noremap <buffer> <silent> \ce ^iecho "<End>"j'
+noremap <buffer> <silent> \ckn $:call BASH_InsertTemplate("comment.keyword-keyword")   
+noremap <buffer> <silent> \cko $:call BASH_InsertTemplate("comment.keyword-workaround")
+noremap <buffer> <silent> \ckw $:call BASH_InsertTemplate("comment.keyword-warning")   
+noremap <buffer> <silent> \ckr $:call BASH_InsertTemplate("comment.keyword-tricky")    
+noremap <buffer> <silent> \ckt $:call BASH_InsertTemplate("comment.keyword-todo")      
+noremap <buffer> <silent> \ckb $:call BASH_InsertTemplate("comment.keyword-bug")       
+vnoremap <buffer> <silent> \ct s:call BASH_InsertDateAndTime('dt')
+onoremap <buffer> <silent> \ct :call BASH_InsertDateAndTime('dt')
+vnoremap <buffer> <silent> \cd s:call BASH_InsertDateAndTime('d')
+onoremap <buffer> <silent> \cd :call BASH_InsertDateAndTime('d')
+vnoremap <buffer> <silent> \cc :call BASH_CommentToggleRange()j
+onoremap <buffer> <silent> \cc :call BASH_CommentToggle()j
+noremap <buffer> <silent> \ch :call BASH_InsertTemplate("comment.file-description")
+noremap <buffer> <silent> \cfu :call BASH_InsertTemplate("comment.function")
+noremap <buffer> <silent> \cfr :call BASH_InsertTemplate("comment.frame")
+noremap <buffer> <silent> \cs :call BASH_GetLineEndCommCol()
+vnoremap <buffer> <silent> \cj :call BASH_AdjustLineEndComm("v")
+onoremap <buffer> <silent> \cj :call BASH_AdjustLineEndComm("a")
+vnoremap <buffer> <silent> \cl :call BASH_MultiLineEndComments()a
+onoremap <buffer> <silent> \cl :call BASH_LineEndComment()
+noremap <buffer> <silent> \hbs :call BASH_HelpBASHsupport()
+noremap <buffer> <silent> \hm :call BASH_help('m')
+noremap <buffer> <silent> \hh :call BASH_help('h')
+noremap <buffer> <silent> \hb :call BASH_help('b')
+map <buffer> <silent> <F9> :call BASH_Debugger():redraw!
+imap <buffer> <silent> <NL> =BASH_JumpCtrlJ()
+imap <buffer> <silent> \ro :call BASH_Toggle_Gvim_Xterm()
+imap <buffer> <silent> \rs :call BASH_Settings()
+imap <buffer> <silent> \rh :call BASH_Hardcopy("n")
+imap <buffer> <silent> \rd :call BASH_Debugger():redraw!
+imap <buffer> <silent> \re :call BASH_MakeScriptExecutable()
+imap <buffer> <silent> \rco :call BASH_SyntaxCheckOptionsLocal()
+imap <buffer> <silent> \rc :call BASH_SyntaxCheck()
+imap <buffer> <silent> \ra :call BASH_CmdLineArguments()
+imap <buffer> <silent> \rr :call BASH_Run("n")
+inoremap <buffer> <silent> \t2 [  -  ]<Left><Left><Left><Left><Left>
+inoremap <buffer> <silent> \t [ -  ]<Left><Left><Left>
+inoremap <buffer> <silent> \px [:xdigit:]
+inoremap <buffer> <silent> \pw [:word:]
+inoremap <buffer> <silent> \pu [:upper:]
+inoremap <buffer> <silent> \ps [:space:]
+inoremap <buffer> <silent> \ppu [:punct:]
+inoremap <buffer> <silent> \ppr [:print:]
+inoremap <buffer> <silent> \pl [:lower:]
+inoremap <buffer> <silent> \pg [:graph:]
+inoremap <buffer> <silent> \pd [:digit:]
+inoremap <buffer> <silent> \pc [:cntrl:]
+inoremap <buffer> <silent> \pb [:blank:]
+inoremap <buffer> <silent> \pas [:ascii:]
+inoremap <buffer> <silent> \pal [:alpha:]
+inoremap <buffer> <silent> \pan [:alnum:]
+inoremap <buffer> <silent> \xm [[  =~  ]]<Left><Left><Left><Left><Left><Left><Left>
+inoremap <buffer> <silent> \sai ${![*]}<Left><Left><Left><Left>
+inoremap <buffer> <silent> \san ${#[@]}<Left><Left><Left><Left>
+inoremap <buffer> <silent> \sa1 ${[*]}<Left><Left><Left><Left>
+inoremap <buffer> <silent> \saa ${[@]}<Left><Left><Left><Left>
+inoremap <buffer> <silent> \sa ${[]}<Left><Left><Left>
+inoremap <buffer> <silent> \se :call BASH_InsertTemplate("statements.echo")
+inoremap <buffer> <silent> \sp :call BASH_InsertTemplate("statements.printf")
+inoremap <buffer> <silent> \sfu :call BASH_InsertTemplate("statements.function")
+inoremap <buffer> <silent> \sw :call BASH_InsertTemplate("statements.while")
+inoremap <buffer> <silent> \st :call BASH_InsertTemplate("statements.until")
+inoremap <buffer> <silent> \ss :call BASH_InsertTemplate("statements.select")
+inoremap <buffer> <silent> \sie :call BASH_InsertTemplate("statements.if-else")
+inoremap <buffer> <silent> \si :call BASH_InsertTemplate("statements.if")
+inoremap <buffer> <silent> \sfo :call BASH_InsertTemplate("statements.for")
+inoremap <buffer> <silent> \sf :call BASH_InsertTemplate("statements.for-in")
+inoremap <buffer> <silent> \sei :call BASH_InsertTemplate("statements.elif")
+inoremap <buffer> <silent> \sc :call BASH_InsertTemplate("statements.case")
+inoremap <buffer> <silent> \cv :call BASH_CommentVimModeline()
+inoremap <buffer> <silent> \cr 0:s/^\s*echo\s\+\"// | s/\s*\"\s*$// | :normal ==j'
+inoremap <buffer> <silent> \ce ^iecho "<End>"j'
+inoremap <buffer> <silent> \ckn $:call BASH_InsertTemplate("comment.keyword-keyword")   
+inoremap <buffer> <silent> \cko $:call BASH_InsertTemplate("comment.keyword-workaround")
+inoremap <buffer> <silent> \ckw $:call BASH_InsertTemplate("comment.keyword-warning")   
+inoremap <buffer> <silent> \ckr $:call BASH_InsertTemplate("comment.keyword-tricky")    
+inoremap <buffer> <silent> \ckt $:call BASH_InsertTemplate("comment.keyword-todo")      
+inoremap <buffer> <silent> \ckb $:call BASH_InsertTemplate("comment.keyword-bug")       
+inoremap <buffer> <silent> \ct :call BASH_InsertDateAndTime('dt')a
+inoremap <buffer> <silent> \cd :call BASH_InsertDateAndTime('d')a
+inoremap <buffer> <silent> \cc :call BASH_CommentToggle()j
+inoremap <buffer> <silent> \ch :call BASH_InsertTemplate("comment.file-description")
+inoremap <buffer> <silent> \cfu :call BASH_InsertTemplate("comment.function")
+inoremap <buffer> <silent> \cfr :call BASH_InsertTemplate("comment.frame")
+inoremap <buffer> <silent> \cs :call BASH_GetLineEndCommCol()
+inoremap <buffer> <silent> \cj :call BASH_AdjustLineEndComm("a")
+inoremap <buffer> <silent> \cl :call BASH_LineEndComment()
+inoremap <buffer> <silent> \hbs :call BASH_HelpBASHsupport()
+inoremap <buffer> <silent> \hm :call BASH_help('m')
+inoremap <buffer> <silent> \hh :call BASH_help('h')
+inoremap <buffer> <silent> \hb :call BASH_help('b')
+let &cpo=s:cpo_save
+unlet s:cpo_save
+setlocal keymap=
+setlocal noarabic
+setlocal autoindent
+setlocal nobinary
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
+setlocal nocindent
+setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
+setlocal cinoptions=
+setlocal cinwords=if,else,while,do,for,switch
+setlocal colorcolumn=
+setlocal comments=s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,fb:-
+setlocal commentstring=#%s
+setlocal complete=.,w,b,u,t,i
+setlocal concealcursor=
+setlocal conceallevel=0
+setlocal completefunc=
+setlocal nocopyindent
+setlocal cryptmethod=
+setlocal nocursorbind
+setlocal nocursorcolumn
+setlocal nocursorline
+setlocal define=
+setlocal dictionary=~/.vim/bash-support/wordlists/bash.list
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=
+setlocal noexpandtab
+if &filetype != 'sh'
+setlocal filetype=sh
+endif
+setlocal foldcolumn=0
+setlocal foldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldmarker={{{,}}}
+setlocal foldmethod=manual
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldtext=foldtext()
+setlocal formatexpr=
+setlocal formatoptions=tcq
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal grepprg=
+setlocal iminsert=0
+setlocal imsearch=0
+setlocal include=
+setlocal includeexpr=
+setlocal indentexpr=GetShIndent()
+setlocal indentkeys=0{,0},!^F,o,O,e,0=then,0=do,0=else,0=elif,0=fi,0=esac,0=done,),0=;;,0=;&,0=fin,0=fil,0=fip,0=fir,0=fix
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255
+setlocal keywordprg=
+setlocal linebreak
+setlocal nolisp
+setlocal nolist
+setlocal makeprg=
+setlocal matchpairs=(:),{:},[:]
+setlocal modeline
+setlocal modifiable
+setlocal nrformats=octal,hex
+setlocal number
+setlocal numberwidth=4
+setlocal omnifunc=
+setlocal path=
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal norelativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal shiftwidth=4
+setlocal noshortname
+setlocal nosmartindent
+setlocal softtabstop=4
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en
+setlocal statusline=
+setlocal suffixesadd=
+setlocal swapfile
+setlocal synmaxcol=3000
+if &syntax != 'sh'
+setlocal syntax=sh
+endif
+setlocal tabstop=4
+setlocal tags=
+setlocal textwidth=75
+setlocal thesaurus=
+setlocal noundofile
+setlocal nowinfixheight
+setlocal nowinfixwidth
+setlocal wrap
+setlocal wrapmargin=0
+silent! normal! zE
+let s:l = 39 - ((38 * winheight(0) + 27) / 55)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+39
+normal! 014l
+let &so = s:so_save | let &siso = s:siso_save
+doautoall SessionLoadPost
+" vim: set ft=vim :

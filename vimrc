@@ -7,8 +7,11 @@ call pathogen#helptags()
 
 set number
 set mouse=a
+
 set autoindent
-set shiftwidth=4
+
+set tabstop=4 shiftwidth=4 softtabstop=4
+
 " Highlight current line in insert mode.
 autocmd InsertLeave * se nocul
 autocmd InsertEnter * se cul
@@ -17,11 +20,11 @@ filetype indent on
 
 "abilitazione riconoscimento file
 filetype on
-autocmd FileType c,cpp,php set cindent shiftwidth=4 "imposto indentazione C per i file c cpp e php
+autocmd FileType c,cpp,php set cindent "shiftwidth=4 "imposto indentazione C per i file c cpp e php
 set textwidth=75
 
 "Per il completamento automatico in vim
-autocmd FileType css set omnifunc=csscomplete#CompleteCSS smartindent shiftwidth=4 "aggiungo l'indentazione per i css
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS smartindent "shiftwidth=4 "aggiungo l'indentazione per i css
 
 augroup php
     " devo disabilitarlo perchè eclim non funziona se no
@@ -54,7 +57,7 @@ augroup php
     " " automagically folds functions & methods. this is getting IDE-like
     " isn't it?
     "
-    " autocmd FileType php let php_folding=1
+     "autocmd FileType php let php_folding=1
     
     " set 'make' command when editing php files
     " autocmd FileType php set makeprg=php\ -l\ %
@@ -115,7 +118,7 @@ noremap <C-i> i<Space><Esc>r
 "nnoremap <someother> :exec \"normal a".nr2char(getchar())."\e"<CR>
 "
 "Abilitare il controllo dell'ortografia italiana
-map <F10> :setlocal spell spelllang=it<CR>
+map <F10> :setlocal spell spelllang=it,en<CR>
 
 "Per evitare che le parole vengano tagliate
 set linebreak
@@ -142,8 +145,46 @@ augroup Folding
     au BufWinEnter * silent loadview
     au BufReadPre * setlocal foldmethod=indent
     au BufWinEnter * if &fdm == 'indent' | setlocal foldmethod=manual | endif
-    inoremap <F9> <C-O>za
-    nnoremap <F9> za
-    onoremap <F9> <C-C>za
-    vnoremap <F9> zf
+    inoremap <F9> <C-O>zA
+    nnoremap <F9> zA
+    onoremap <F9> <C-C>zA
+    vnoremap <F9> zF
 augroup END
+
+" Take from: http://vimcasts.org/episodes/tabs-and-spaces/
+" Shortcut to rapidly toggle `set list`
+nmap <Leader>k :set list!<CR>
+ 
+" Use the same symbols as TextMate for tabstops and EOLs
+set listchars=tab:▸\ ,eol:¬
+" Set tabstop, softtabstop and shiftwidth to the same value
+command! -nargs=* Stab call Stab()
+function! Stab()
+    let l:tabstop = 1 * input('set tabstop = softtabstop = shiftwidth = ')
+    if l:tabstop > 0
+	let &l:sts = l:tabstop
+	let &l:ts = l:tabstop
+	let &l:sw = l:tabstop
+    endif
+    call SummarizeTabs()
+endfunction
+ 
+function! SummarizeTabs()
+  try
+    echohl ModeMsg
+    echon 'tabstop='.&l:ts
+    echon ' shiftwidth='.&l:sw
+    echon ' softtabstop='.&l:sts
+    if &l:et
+      echon ' expandtab'
+    else
+      echon ' noexpandtab'
+    endif
+  finally
+    echohl None
+  endtry
+endfunction
+
+:command! -range=% -nargs=0 Tab2Space execute "<line1>,<line2>s/^\\t\\+/\\=substitute(submatch(0), '\\t', repeat(' ', ".&ts."), 'g')"
+:command! -range=% -nargs=0 Space2Tab execute "<line1>,<line2>s/^\\( \\{".&ts."\\}\\)\\+/\\=substitute(submatch(0), ' \\{".&ts."\\}', '\\t', 'g')"
+

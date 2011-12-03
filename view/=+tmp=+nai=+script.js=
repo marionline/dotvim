@@ -1,0 +1,226 @@
+let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
+argglobal
+setlocal keymap=
+setlocal noarabic
+setlocal autoindent
+setlocal nobinary
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
+setlocal cindent
+setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
+setlocal cinoptions=j1,J1
+setlocal cinwords=if,else,while,do,for,switch
+setlocal colorcolumn=
+setlocal comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,://
+setlocal commentstring=//%s
+setlocal complete=.,w,b,u,t,i
+setlocal concealcursor=
+setlocal conceallevel=0
+setlocal completefunc=eclim#javascript#complete#CodeComplete
+setlocal nocopyindent
+setlocal cryptmethod=
+setlocal nocursorbind
+setlocal nocursorcolumn
+setlocal nocursorline
+setlocal define=
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=
+setlocal noexpandtab
+if &filetype != 'javascript'
+setlocal filetype=javascript
+endif
+setlocal foldcolumn=0
+setlocal foldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldmarker={{{,}}}
+setlocal foldmethod=manual
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldtext=foldtext()
+setlocal formatexpr=
+setlocal formatoptions=croql
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal grepprg=
+setlocal iminsert=0
+setlocal imsearch=0
+setlocal include=
+setlocal includeexpr=
+setlocal indentexpr=EclimGetJavascriptIndent(v:lnum)
+setlocal indentkeys=0{,0},:,0#,!^F,o,O,e,0),0},),;
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255
+setlocal keywordprg=
+setlocal linebreak
+setlocal nolisp
+setlocal nolist
+setlocal makeprg=
+setlocal matchpairs=(:),{:},[:]
+setlocal modeline
+setlocal modifiable
+setlocal nrformats=octal,hex
+setlocal number
+setlocal numberwidth=4
+setlocal omnifunc=javascriptcomplete#CompleteJS
+setlocal path=
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal norelativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal shiftwidth=4
+setlocal noshortname
+setlocal smartindent
+setlocal softtabstop=4
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en
+setlocal statusline=
+setlocal suffixesadd=
+setlocal swapfile
+setlocal synmaxcol=3000
+if &syntax != 'javascript'
+setlocal syntax=javascript
+endif
+setlocal tabstop=4
+setlocal tags=
+setlocal textwidth=75
+setlocal thesaurus=
+setlocal noundofile
+setlocal nowinfixheight
+setlocal nowinfixwidth
+setlocal wrap
+setlocal wrapmargin=0
+silent! normal! zE
+27,27fold
+34,34fold
+24,35fold
+19,36fold
+46,48fold
+42,49fold
+69,69fold
+60,70fold
+56,71fold
+77,77fold
+76,80fold
+85,85fold
+84,88fold
+99,102fold
+95,103fold
+13,105fold
+112,112fold
+112,112fold
+119,126fold
+119,126fold
+118,127fold
+140,144fold
+140,144fold
+147,148fold
+147,148fold
+139,149fold
+139,149fold
+158,161fold
+158,161fold
+156,162fold
+136,163fold
+136,163fold
+167,167fold
+166,168fold
+133,168fold
+177,177fold
+176,177fold
+194,194fold
+198,198fold
+208,209fold
+208,209fold
+207,210fold
+207,210fold
+213,214fold
+213,214fold
+212,215fold
+212,215fold
+203,215fold
+191,215fold
+230,238fold
+230,238fold
+226,238fold
+241,241fold
+241,241fold
+241,241fold
+244,246fold
+244,246fold
+244,248fold
+226,248fold
+260,261fold
+260,261fold
+265,266fold
+264,266fold
+257,267fold
+257,267fold
+273,275fold
+273,275fold
+279,281fold
+278,281fold
+270,282fold
+225,283fold
+225,283fold
+296,297fold
+296,297fold
+299,299fold
+299,299fold
+301,301fold
+301,301fold
+303,303fold
+303,303fold
+310,310fold
+310,310fold
+309,311fold
+309,311fold
+308,312fold
+308,312fold
+316,316fold
+316,316fold
+294,317fold
+13
+normal zo
+76
+normal zo
+77
+normal zo
+76
+normal zo
+84
+normal zo
+85
+normal zo
+84
+normal zo
+13
+normal zo
+118
+normal zo
+119
+normal zo
+119
+normal zo
+119
+normal zo
+118
+normal zo
+let s:l = 77 - ((36 * winheight(0) + 13) / 27)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+77
+normal! 035l
+let &so = s:so_save | let &siso = s:siso_save
+doautoall SessionLoadPost
+" vim: set ft=vim :

@@ -1,0 +1,231 @@
+let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
+argglobal
+setlocal keymap=
+setlocal noarabic
+setlocal autoindent
+setlocal nobinary
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
+setlocal nocindent
+setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
+setlocal cinoptions=
+setlocal cinwords=if,else,while,do,for,switch
+setlocal colorcolumn=
+setlocal comments=fb:*,fb:-,fb:+,n:>
+setlocal commentstring=>\ %s
+setlocal complete=.,w,b,u,t,i
+setlocal concealcursor=
+setlocal conceallevel=0
+setlocal completefunc=eclim#html#complete#CodeComplete
+setlocal nocopyindent
+setlocal cryptmethod=
+setlocal nocursorbind
+setlocal nocursorcolumn
+setlocal nocursorline
+setlocal define=
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=
+setlocal noexpandtab
+if &filetype != 'markdown'
+setlocal filetype=markdown
+endif
+setlocal foldcolumn=0
+setlocal foldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldmarker={{{,}}}
+setlocal foldmethod=manual
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldtext=foldtext()
+setlocal formatexpr=
+setlocal formatoptions=tcqln
+setlocal formatlistpat=^\\s*\\d\\+\\.\\s\\+\\|^[-*+]\\s\\+
+setlocal grepprg=
+setlocal iminsert=0
+setlocal imsearch=0
+setlocal include=
+setlocal includeexpr=
+setlocal indentexpr=
+setlocal indentkeys=0{,0},:,0#,!^F,o,O,e
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255
+setlocal keywordprg=
+setlocal linebreak
+setlocal nolisp
+setlocal nolist
+setlocal makeprg=
+setlocal matchpairs=(:),{:},[:],<:>
+setlocal modeline
+setlocal modifiable
+setlocal nrformats=octal,hex
+setlocal number
+setlocal numberwidth=4
+setlocal omnifunc=htmlcomplete#CompleteTags
+setlocal path=
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal norelativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal shiftwidth=4
+setlocal noshortname
+setlocal nosmartindent
+setlocal softtabstop=4
+setlocal spell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellfile=
+setlocal spelllang=it,en
+setlocal statusline=
+setlocal suffixesadd=
+setlocal swapfile
+setlocal synmaxcol=3000
+if &syntax != 'markdown'
+setlocal syntax=markdown
+endif
+setlocal tabstop=4
+setlocal tags=
+setlocal textwidth=75
+setlocal thesaurus=
+setlocal noundofile
+setlocal nowinfixheight
+setlocal nowinfixwidth
+setlocal wrap
+setlocal wrapmargin=0
+silent! normal! zE
+15,16fold
+37,37fold
+51,51fold
+60,61fold
+70,70fold
+81,82fold
+119,120fold
+124,125fold
+134,135fold
+144,145fold
+151,156fold
+163,168fold
+179,180fold
+184,189fold
+200,204fold
+220,220fold
+226,229fold
+233,234fold
+245,251fold
+255,257fold
+262,269fold
+277,277fold
+287,290fold
+306,309fold
+313,316fold
+320,322fold
+328,329fold
+333,335fold
+417,423fold
+429,435fold
+441,443fold
+453,455fold
+459,461fold
+469,471fold
+495,498fold
+525,525fold
+534,535fold
+542,542fold
+551,552fold
+556,557fold
+15
+normal zc
+37
+normal zc
+51
+normal zc
+60
+normal zo
+70
+normal zo
+81
+normal zo
+119
+normal zc
+124
+normal zc
+134
+normal zc
+144
+normal zc
+151
+normal zc
+163
+normal zc
+179
+normal zc
+184
+normal zo
+200
+normal zc
+220
+normal zc
+226
+normal zc
+233
+normal zc
+245
+normal zc
+255
+normal zc
+262
+normal zc
+277
+normal zc
+287
+normal zc
+306
+normal zc
+313
+normal zc
+320
+normal zc
+328
+normal zc
+333
+normal zc
+417
+normal zc
+429
+normal zc
+441
+normal zc
+453
+normal zc
+459
+normal zc
+469
+normal zc
+495
+normal zc
+525
+normal zc
+534
+normal zo
+542
+normal zc
+551
+normal zc
+556
+normal zc
+let s:l = 347 - ((10 * winheight(0) + 13) / 27)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+347
+normal! 0
+let &so = s:so_save | let &siso = s:siso_save
+doautoall SessionLoadPost
+" vim: set ft=vim :

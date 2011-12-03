@@ -1,0 +1,1723 @@
+let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
+argglobal
+let s:cpo_save=&cpo
+set cpo&vim
+imap <buffer> <silent> <F9> :call BASH_Debugger():redraw!
+nmap <buffer> <silent> <NL> i=BASH_JumpCtrlJ()
+nnoremap <buffer> "" ciW""P
+nnoremap <buffer> '' ciW''P
+map <buffer> <silent> \ro :call BASH_Toggle_Gvim_Xterm()
+map <buffer> <silent> \rs :call BASH_Settings()
+vmap <buffer> <silent> \rh :call BASH_Hardcopy("v")
+nmap <buffer> <silent> \rh :call BASH_Hardcopy("n")
+omap <buffer> <silent> \rh :call BASH_Hardcopy("n")
+vmap <buffer> <silent> \rr :call BASH_Run("v")
+map <buffer> <silent> \rd :call BASH_Debugger():redraw!
+map <buffer> <silent> \re :call BASH_MakeScriptExecutable()
+map <buffer> <silent> \rco :call BASH_SyntaxCheckOptionsLocal()
+map <buffer> <silent> \rc :call BASH_SyntaxCheck()
+map <buffer> <silent> \ra :call BASH_CmdLineArguments()
+nmap <buffer> <silent> \rr :call BASH_Run("n")
+omap <buffer> <silent> \rr :call BASH_Run("n")
+nnoremap <buffer> <silent> \t2 a[  -  ]<Left><Left><Left><Left><Left>
+nnoremap <buffer> <silent> \t a[ -  ]<Left><Left><Left>
+noremap <buffer> \nts :BashStyle 
+noremap <buffer> <silent> \ntr :call BASH_RereadTemplates()
+noremap <buffer> <silent> \ntg :call BASH_EditTemplates("global")
+noremap <buffer> <silent> \ntl :call BASH_EditTemplates("local")
+noremap <buffer> <silent> \ne :call BASH_CodeSnippets("e")
+vnoremap <buffer> <silent> \nw :call BASH_CodeSnippets("wv")
+nnoremap <buffer> <silent> \nw :call BASH_CodeSnippets("w")
+onoremap <buffer> <silent> \nw :call BASH_CodeSnippets("w")
+noremap <buffer> <silent> \nr :call BASH_CodeSnippets("r")
+nnoremap <buffer> <silent> \px a[:xdigit:]
+nnoremap <buffer> <silent> \pw a[:word:]
+nnoremap <buffer> <silent> \pu a[:upper:]
+nnoremap <buffer> <silent> \ps a[:space:]
+nnoremap <buffer> <silent> \ppu a[:punct:]
+nnoremap <buffer> <silent> \ppr a[:print:]
+nnoremap <buffer> <silent> \pl a[:lower:]
+nnoremap <buffer> <silent> \pg a[:graph:]
+nnoremap <buffer> <silent> \pd a[:digit:]
+nnoremap <buffer> <silent> \pc a[:cntrl:]
+nnoremap <buffer> <silent> \pb a[:blank:]
+nnoremap <buffer> <silent> \pas a[:ascii:]
+nnoremap <buffer> <silent> \pal a[:alpha:]
+nnoremap <buffer> <silent> \pan a[:alnum:]
+nnoremap <buffer> <silent> \xm a[[  =~  ]]<Left><Left><Left><Left><Left><Left><Left>
+vnoremap <buffer> <silent> \sai s${![*]}<Left><Left><Left>P
+nnoremap <buffer> <silent> \sai a${![*]}<Left><Left><Left><Left>
+onoremap <buffer> <silent> \sai a${![*]}<Left><Left><Left><Left>
+vnoremap <buffer> <silent> \san s${#[@]}<Left><Left><Left>P
+nnoremap <buffer> <silent> \san a${#[@]}<Left><Left><Left><Left>
+onoremap <buffer> <silent> \san a${#[@]}<Left><Left><Left><Left>
+vnoremap <buffer> <silent> \sa1 s${[*]}<Left><Left><Left>P
+nnoremap <buffer> <silent> \sa1 a${[*]}<Left><Left><Left><Left>
+onoremap <buffer> <silent> \sa1 a${[*]}<Left><Left><Left><Left>
+vnoremap <buffer> <silent> \saa s${[@]}<Left><Left><Left>P
+nnoremap <buffer> <silent> \saa a${[@]}<Left><Left><Left><Left>
+onoremap <buffer> <silent> \saa a${[@]}<Left><Left><Left><Left>
+vnoremap <buffer> <silent> \sa s${[]}<Left><Left>P
+nnoremap <buffer> <silent> \sa a${[]}<Left><Left><Left>
+onoremap <buffer> <silent> \sa a${[]}<Left><Left><Left>
+vnoremap <buffer> <silent> \se :call BASH_InsertTemplate("statements.echo", "v")
+nnoremap <buffer> <silent> \se :call BASH_InsertTemplate("statements.echo")
+onoremap <buffer> <silent> \se :call BASH_InsertTemplate("statements.echo")
+vnoremap <buffer> <silent> \sp :call BASH_InsertTemplate("statements.printf", "v")
+nnoremap <buffer> <silent> \sp :call BASH_InsertTemplate("statements.printf")
+onoremap <buffer> <silent> \sp :call BASH_InsertTemplate("statements.printf")
+vnoremap <buffer> <silent> \sfu :call BASH_InsertTemplate("statements.function", "v")
+nnoremap <buffer> <silent> \sfu :call BASH_InsertTemplate("statements.function")
+onoremap <buffer> <silent> \sfu :call BASH_InsertTemplate("statements.function")
+vnoremap <buffer> <silent> \sw :call BASH_InsertTemplate("statements.while", "v")
+vnoremap <buffer> <silent> \st :call BASH_InsertTemplate("statements.until", "v")
+vnoremap <buffer> <silent> \ss :call BASH_InsertTemplate("statements.select", "v")
+vnoremap <buffer> <silent> \sie :call BASH_InsertTemplate("statements.if-else", "v")
+vnoremap <buffer> <silent> \si :call BASH_InsertTemplate("statements.if", "v")
+vnoremap <buffer> <silent> \sfo :call BASH_InsertTemplate("statements.for", "v")
+vnoremap <buffer> <silent> \sf :call BASH_InsertTemplate("statements.for-in", "v")
+nnoremap <buffer> <silent> \sw :call BASH_InsertTemplate("statements.while")
+onoremap <buffer> <silent> \sw :call BASH_InsertTemplate("statements.while")
+nnoremap <buffer> <silent> \st :call BASH_InsertTemplate("statements.until")
+onoremap <buffer> <silent> \st :call BASH_InsertTemplate("statements.until")
+nnoremap <buffer> <silent> \ss :call BASH_InsertTemplate("statements.select")
+onoremap <buffer> <silent> \ss :call BASH_InsertTemplate("statements.select")
+nnoremap <buffer> <silent> \sie :call BASH_InsertTemplate("statements.if-else")
+onoremap <buffer> <silent> \sie :call BASH_InsertTemplate("statements.if-else")
+nnoremap <buffer> <silent> \si :call BASH_InsertTemplate("statements.if")
+onoremap <buffer> <silent> \si :call BASH_InsertTemplate("statements.if")
+nnoremap <buffer> <silent> \sfo :call BASH_InsertTemplate("statements.for")
+onoremap <buffer> <silent> \sfo :call BASH_InsertTemplate("statements.for")
+nnoremap <buffer> <silent> \sf :call BASH_InsertTemplate("statements.for-in")
+onoremap <buffer> <silent> \sf :call BASH_InsertTemplate("statements.for-in")
+noremap <buffer> <silent> \sei :call BASH_InsertTemplate("statements.elif")
+noremap <buffer> <silent> \sc :call BASH_InsertTemplate("statements.case")
+noremap <buffer> <silent> \cv :call BASH_CommentVimModeline()
+noremap <buffer> <silent> \cr 0:s/^\s*echo\s\+\"// | s/\s*\"\s*$// | :normal ==j'
+noremap <buffer> <silent> \ce ^iecho "<End>"j'
+noremap <buffer> <silent> \ckn $:call BASH_InsertTemplate("comment.keyword-keyword")   
+noremap <buffer> <silent> \cko $:call BASH_InsertTemplate("comment.keyword-workaround")
+noremap <buffer> <silent> \ckw $:call BASH_InsertTemplate("comment.keyword-warning")   
+noremap <buffer> <silent> \ckr $:call BASH_InsertTemplate("comment.keyword-tricky")    
+noremap <buffer> <silent> \ckt $:call BASH_InsertTemplate("comment.keyword-todo")      
+noremap <buffer> <silent> \ckb $:call BASH_InsertTemplate("comment.keyword-bug")       
+vnoremap <buffer> <silent> \ct s:call BASH_InsertDateAndTime('dt')
+nnoremap <buffer> <silent> \ct :call BASH_InsertDateAndTime('dt')
+onoremap <buffer> <silent> \ct :call BASH_InsertDateAndTime('dt')
+vnoremap <buffer> <silent> \cd s:call BASH_InsertDateAndTime('d')
+nnoremap <buffer> <silent> \cd :call BASH_InsertDateAndTime('d')
+onoremap <buffer> <silent> \cd :call BASH_InsertDateAndTime('d')
+vnoremap <buffer> <silent> \cc :call BASH_CommentToggleRange()j
+nnoremap <buffer> <silent> \cc :call BASH_CommentToggle()j
+onoremap <buffer> <silent> \cc :call BASH_CommentToggle()j
+noremap <buffer> <silent> \ch :call BASH_InsertTemplate("comment.file-description")
+noremap <buffer> <silent> \cfu :call BASH_InsertTemplate("comment.function")
+noremap <buffer> <silent> \cfr :call BASH_InsertTemplate("comment.frame")
+noremap <buffer> <silent> \cs :call BASH_GetLineEndCommCol()
+vnoremap <buffer> <silent> \cj :call BASH_AdjustLineEndComm("v")
+nnoremap <buffer> <silent> \cj :call BASH_AdjustLineEndComm("a")
+onoremap <buffer> <silent> \cj :call BASH_AdjustLineEndComm("a")
+vnoremap <buffer> <silent> \cl :call BASH_MultiLineEndComments()a
+nnoremap <buffer> <silent> \cl :call BASH_LineEndComment()
+onoremap <buffer> <silent> \cl :call BASH_LineEndComment()
+noremap <buffer> <silent> \hbs :call BASH_HelpBASHsupport()
+noremap <buffer> <silent> \hm :call BASH_help('m')
+noremap <buffer> <silent> \hh :call BASH_help('h')
+noremap <buffer> <silent> \hb :call BASH_help('b')
+map <buffer> <silent> <F9> :call BASH_Debugger():redraw!
+imap <buffer> <silent> <NL> =BASH_JumpCtrlJ()
+imap <buffer> <silent> \ro :call BASH_Toggle_Gvim_Xterm()
+imap <buffer> <silent> \rs :call BASH_Settings()
+imap <buffer> <silent> \rh :call BASH_Hardcopy("n")
+imap <buffer> <silent> \rd :call BASH_Debugger():redraw!
+imap <buffer> <silent> \re :call BASH_MakeScriptExecutable()
+imap <buffer> <silent> \rco :call BASH_SyntaxCheckOptionsLocal()
+imap <buffer> <silent> \rc :call BASH_SyntaxCheck()
+imap <buffer> <silent> \ra :call BASH_CmdLineArguments()
+imap <buffer> <silent> \rr :call BASH_Run("n")
+inoremap <buffer> <silent> \t2 [  -  ]<Left><Left><Left><Left><Left>
+inoremap <buffer> <silent> \t [ -  ]<Left><Left><Left>
+inoremap <buffer> <silent> \px [:xdigit:]
+inoremap <buffer> <silent> \pw [:word:]
+inoremap <buffer> <silent> \pu [:upper:]
+inoremap <buffer> <silent> \ps [:space:]
+inoremap <buffer> <silent> \ppu [:punct:]
+inoremap <buffer> <silent> \ppr [:print:]
+inoremap <buffer> <silent> \pl [:lower:]
+inoremap <buffer> <silent> \pg [:graph:]
+inoremap <buffer> <silent> \pd [:digit:]
+inoremap <buffer> <silent> \pc [:cntrl:]
+inoremap <buffer> <silent> \pb [:blank:]
+inoremap <buffer> <silent> \pas [:ascii:]
+inoremap <buffer> <silent> \pal [:alpha:]
+inoremap <buffer> <silent> \pan [:alnum:]
+inoremap <buffer> <silent> \xm [[  =~  ]]<Left><Left><Left><Left><Left><Left><Left>
+inoremap <buffer> <silent> \sai ${![*]}<Left><Left><Left><Left>
+inoremap <buffer> <silent> \san ${#[@]}<Left><Left><Left><Left>
+inoremap <buffer> <silent> \sa1 ${[*]}<Left><Left><Left><Left>
+inoremap <buffer> <silent> \saa ${[@]}<Left><Left><Left><Left>
+inoremap <buffer> <silent> \sa ${[]}<Left><Left><Left>
+inoremap <buffer> <silent> \se :call BASH_InsertTemplate("statements.echo")
+inoremap <buffer> <silent> \sp :call BASH_InsertTemplate("statements.printf")
+inoremap <buffer> <silent> \sfu :call BASH_InsertTemplate("statements.function")
+inoremap <buffer> <silent> \sw :call BASH_InsertTemplate("statements.while")
+inoremap <buffer> <silent> \st :call BASH_InsertTemplate("statements.until")
+inoremap <buffer> <silent> \ss :call BASH_InsertTemplate("statements.select")
+inoremap <buffer> <silent> \sie :call BASH_InsertTemplate("statements.if-else")
+inoremap <buffer> <silent> \si :call BASH_InsertTemplate("statements.if")
+inoremap <buffer> <silent> \sfo :call BASH_InsertTemplate("statements.for")
+inoremap <buffer> <silent> \sf :call BASH_InsertTemplate("statements.for-in")
+inoremap <buffer> <silent> \sei :call BASH_InsertTemplate("statements.elif")
+inoremap <buffer> <silent> \sc :call BASH_InsertTemplate("statements.case")
+inoremap <buffer> <silent> \cv :call BASH_CommentVimModeline()
+inoremap <buffer> <silent> \cr 0:s/^\s*echo\s\+\"// | s/\s*\"\s*$// | :normal ==j'
+inoremap <buffer> <silent> \ce ^iecho "<End>"j'
+inoremap <buffer> <silent> \ckn $:call BASH_InsertTemplate("comment.keyword-keyword")   
+inoremap <buffer> <silent> \cko $:call BASH_InsertTemplate("comment.keyword-workaround")
+inoremap <buffer> <silent> \ckw $:call BASH_InsertTemplate("comment.keyword-warning")   
+inoremap <buffer> <silent> \ckr $:call BASH_InsertTemplate("comment.keyword-tricky")    
+inoremap <buffer> <silent> \ckt $:call BASH_InsertTemplate("comment.keyword-todo")      
+inoremap <buffer> <silent> \ckb $:call BASH_InsertTemplate("comment.keyword-bug")       
+inoremap <buffer> <silent> \ct :call BASH_InsertDateAndTime('dt')a
+inoremap <buffer> <silent> \cd :call BASH_InsertDateAndTime('d')a
+inoremap <buffer> <silent> \cc :call BASH_CommentToggle()j
+inoremap <buffer> <silent> \ch :call BASH_InsertTemplate("comment.file-description")
+inoremap <buffer> <silent> \cfu :call BASH_InsertTemplate("comment.function")
+inoremap <buffer> <silent> \cfr :call BASH_InsertTemplate("comment.frame")
+inoremap <buffer> <silent> \cs :call BASH_GetLineEndCommCol()
+inoremap <buffer> <silent> \cj :call BASH_AdjustLineEndComm("a")
+inoremap <buffer> <silent> \cl :call BASH_LineEndComment()
+inoremap <buffer> <silent> \hbs :call BASH_HelpBASHsupport()
+inoremap <buffer> <silent> \hm :call BASH_help('m')
+inoremap <buffer> <silent> \hh :call BASH_help('h')
+inoremap <buffer> <silent> \hb :call BASH_help('b')
+let &cpo=s:cpo_save
+unlet s:cpo_save
+setlocal keymap=
+setlocal noarabic
+setlocal autoindent
+setlocal nobinary
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
+setlocal nocindent
+setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
+setlocal cinoptions=
+setlocal cinwords=if,else,while,do,for,switch
+setlocal colorcolumn=
+setlocal comments=s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,fb:-
+setlocal commentstring=#%s
+setlocal complete=.,w,b,u,t,i
+setlocal concealcursor=
+setlocal conceallevel=0
+setlocal completefunc=
+setlocal nocopyindent
+setlocal cryptmethod=
+setlocal nocursorbind
+setlocal nocursorcolumn
+setlocal nocursorline
+setlocal define=
+setlocal dictionary=~/.vim/bash-support/wordlists/bash.list
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=
+setlocal noexpandtab
+if &filetype != 'sh'
+setlocal filetype=sh
+endif
+setlocal foldcolumn=0
+setlocal foldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldmarker={{{,}}}
+setlocal foldmethod=manual
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldtext=foldtext()
+setlocal formatexpr=
+setlocal formatoptions=tcql
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal grepprg=
+setlocal iminsert=0
+setlocal imsearch=0
+setlocal include=
+setlocal includeexpr=
+setlocal indentexpr=GetShIndent()
+setlocal indentkeys=0{,0},!^F,o,O,e,0=then,0=do,0=else,0=elif,0=fi,0=esac,0=done,),0=;;,0=;&,0=fin,0=fil,0=fip,0=fir,0=fix
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255
+setlocal keywordprg=
+setlocal linebreak
+setlocal nolisp
+setlocal nolist
+setlocal makeprg=
+setlocal matchpairs=(:),{:},[:]
+setlocal modeline
+setlocal modifiable
+setlocal nrformats=octal,hex
+setlocal number
+setlocal numberwidth=4
+setlocal omnifunc=
+setlocal path=
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal readonly
+setlocal norelativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal shiftwidth=4
+setlocal noshortname
+setlocal nosmartindent
+setlocal softtabstop=4
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en
+setlocal statusline=
+setlocal suffixesadd=
+setlocal swapfile
+setlocal synmaxcol=3000
+if &syntax != 'sh'
+setlocal syntax=sh
+endif
+setlocal tabstop=4
+setlocal tags=
+setlocal textwidth=75
+setlocal thesaurus=
+setlocal noundofile
+setlocal nowinfixheight
+setlocal nowinfixwidth
+setlocal wrap
+setlocal wrapmargin=0
+silent! normal! zE
+46,46fold
+48,48fold
+82,82fold
+109,109fold
+111,111fold
+133,134fold
+137,138fold
+141,142fold
+145,146fold
+136,148fold
+221,221fold
+229,229fold
+227,231fold
+239,239fold
+236,239fold
+259,260fold
+259,260fold
+340,342fold
+344,347fold
+344,347fold
+351,351fold
+353,356fold
+439,440fold
+442,452fold
+454,454fold
+505,505fold
+525,525fold
+527,527fold
+532,532fold
+535,535fold
+530,539fold
+596,601fold
+618,625fold
+673,673fold
+631,687fold
+863,863fold
+935,937fold
+949,949fold
+952,952fold
+954,954fold
+957,957fold
+959,959fold
+963,963fold
+966,966fold
+969,969fold
+972,972fold
+974,974fold
+978,978fold
+981,981fold
+984,987fold
+989,990fold
+993,993fold
+995,995fold
+998,998fold
+1000,1000fold
+1003,1006fold
+1008,1009fold
+1014,1014fold
+1018,1018fold
+1022,1022fold
+1025,1025fold
+1027,1027fold
+1029,1029fold
+1032,1032fold
+1034,1034fold
+1037,1037fold
+1040,1040fold
+1044,1044fold
+1047,1047fold
+1050,1050fold
+1052,1052fold
+1055,1055fold
+1057,1057fold
+1061,1061fold
+1064,1064fold
+1067,1067fold
+1069,1069fold
+1073,1073fold
+1076,1076fold
+1079,1079fold
+1081,1081fold
+1085,1085fold
+1089,1089fold
+1093,1093fold
+1098,1098fold
+1102,1102fold
+1105,1105fold
+1107,1107fold
+1111,1111fold
+1114,1114fold
+1118,1118fold
+1121,1121fold
+1130,1130fold
+1138,1138fold
+1141,1141fold
+1143,1143fold
+1146,1146fold
+1148,1148fold
+1152,1152fold
+1155,1155fold
+1158,1158fold
+1164,1164fold
+1169,1169fold
+1172,1172fold
+1174,1174fold
+1177,1177fold
+1179,1179fold
+1183,1183fold
+1186,1186fold
+1189,1189fold
+1191,1191fold
+1194,1194fold
+1197,1197fold
+1200,1203fold
+1205,1206fold
+1209,1212fold
+1214,1215fold
+1219,1219fold
+1223,1223fold
+1226,1226fold
+1230,1230fold
+1233,1233fold
+1238,1238fold
+1241,1244fold
+1246,1247fold
+1251,1255fold
+1268,1270fold
+1268,1270fold
+1274,1275fold
+1291,1293fold
+1295,1295fold
+1321,1323fold
+1326,1327fold
+1330,1331fold
+1334,1335fold
+1338,1339fold
+1325,1341fold
+1344,1344fold
+1356,1356fold
+1358,1358fold
+1394,1395fold
+1398,1398fold
+1401,1401fold
+1405,1405fold
+1405,1405fold
+1405,1405fold
+1407,1407fold
+1407,1407fold
+1407,1407fold
+1460,1460fold
+1460,1460fold
+1460,1460fold
+1460,1460fold
+1460,1460fold
+1460,1460fold
+1477,1477fold
+1477,1477fold
+1477,1477fold
+1477,1477fold
+1477,1477fold
+1477,1477fold
+1484,1484fold
+1484,1484fold
+1484,1484fold
+1487,1487fold
+1487,1487fold
+1487,1487fold
+1508,1509fold
+1529,1531fold
+1533,1535fold
+1537,1539fold
+1543,1554fold
+1661,1664fold
+1641,1670fold
+1684,1686fold
+1691,1691fold
+1695,1699fold
+1701,1706fold
+1709,1719fold
+1721,1723fold
+1728,1740fold
+1745,1758fold
+1763,1769fold
+1772,1773fold
+1818,1818fold
+1824,1824fold
+1826,1827fold
+1835,1835fold
+1837,1840fold
+1857,1858fold
+1860,1862fold
+1864,1868fold
+1870,1870fold
+1872,1872fold
+1874,1875fold
+1879,1886fold
+2009,2009fold
+2009,2009fold
+2009,2009fold
+2062,2064fold
+2102,2104fold
+2122,2122fold
+2124,2124fold
+2134,2134fold
+2141,2141fold
+2141,2141fold
+2159,2161fold
+2200,2206fold
+2220,2221fold
+2258,2260fold
+2278,2278fold
+2302,2304fold
+2326,2326fold
+2328,2328fold
+2338,2338fold
+2421,2422fold
+2453,2453fold
+2446,2464fold
+2505,2505fold
+2507,2510fold
+2517,2517fold
+2551,2554fold
+2606,2608fold
+2644,2644fold
+2665,2667fold
+2673,2673fold
+2723,2725fold
+2731,2732fold
+2761,2763fold
+2769,2771fold
+2800,2802fold
+2826,2826fold
+2828,2828fold
+2832,2832fold
+2834,2834fold
+2858,2859fold
+2902,2902fold
+2919,2921fold
+2940,2940fold
+2943,2943fold
+2946,2947fold
+2963,2978fold
+2987,3002fold
+3011,3026fold
+3035,3037fold
+3039,3041fold
+3043,3045fold
+3118,3118fold
+3161,3161fold
+3159,3163fold
+3177,3178fold
+3181,3193fold
+3223,3224fold
+3235,3248fold
+3254,3254fold
+3305,3306fold
+3317,3330fold
+3336,3336fold
+3381,3381fold
+3383,3383fold
+3387,3395fold
+3398,3399fold
+3402,3403fold
+3418,3433fold
+3489,3494fold
+3508,3508fold
+3529,3531fold
+3533,3535fold
+3511,3541fold
+3614,3622fold
+3624,3624fold
+3636,3638fold
+3640,3642fold
+3644,3646fold
+3672,3672fold
+3674,3674fold
+3690,3690fold
+3692,3692fold
+3707,3709fold
+3711,3712fold
+3714,3716fold
+3718,3721fold
+3723,3724fold
+3726,3727fold
+3774,3781fold
+3794,3804fold
+3806,3816fold
+3833,3844fold
+3849,3860fold
+3830,3863fold
+3883,3883fold
+3912,3915fold
+3921,3921fold
+3925,3926fold
+3937,3937fold
+3948,3955fold
+3979,3981fold
+4019,4021fold
+4039,4039fold
+4041,4041fold
+4051,4051fold
+4075,4077fold
+4115,4117fold
+4135,4135fold
+4137,4137fold
+4147,4147fold
+4171,4173fold
+4211,4213fold
+4231,4231fold
+4233,4233fold
+4243,4243fold
+4272,4274fold
+4294,4294fold
+4294,4294fold
+4294,4294fold
+4309,4311fold
+4346,4348fold
+4369,4370fold
+4399,4399fold
+4399,4399fold
+4399,4399fold
+4414,4416fold
+4451,4453fold
+4525,4527fold
+4533,4533fold
+4599,4600fold
+4598,4600fold
+4598,4600fold
+4610,4612fold
+4672,4672fold
+4672,4672fold
+4704,4706fold
+4712,4712fold
+4718,4718fold
+4718,4718fold
+4741,4741fold
+4741,4741fold
+4770,4772fold
+4778,4778fold
+4809,4811fold
+4827,4827fold
+4829,4829fold
+4831,4832fold
+4834,4834fold
+4836,4836fold
+4838,4838fold
+4840,4840fold
+4842,4842fold
+4844,4844fold
+4847,4847fold
+4857,4857fold
+4857,4857fold
+4877,4877fold
+4879,4879fold
+4899,4901fold
+4919,4919fold
+4943,4945fold
+4967,4967fold
+4969,4969fold
+4979,4979fold
+5035,5035fold
+5056,5058fold
+5064,5064fold
+5114,5116fold
+5122,5123fold
+5152,5154fold
+5160,5162fold
+5191,5193fold
+5217,5217fold
+5219,5219fold
+5223,5223fold
+5225,5225fold
+5237,5238fold
+5251,5253fold
+5273,5273fold
+5273,5273fold
+5273,5273fold
+5288,5290fold
+5325,5327fold
+5348,5349fold
+5378,5378fold
+5378,5378fold
+5378,5378fold
+5393,5395fold
+5430,5432fold
+5492,5494fold
+5512,5512fold
+5536,5538fold
+5560,5560fold
+5562,5562fold
+5572,5572fold
+5622,5627fold
+5643,5645fold
+5651,5651fold
+5671,5673fold
+5689,5691fold
+5697,5697fold
+5709,5709fold
+5711,5711fold
+5715,5715fold
+5717,5717fold
+5738,5738fold
+5747,5748fold
+5754,5755fold
+5765,5766fold
+5771,5772fold
+5776,5786fold
+5790,5791fold
+5802,5802fold
+5798,5805fold
+5807,5808fold
+5810,5816fold
+5823,5826fold
+5821,5836fold
+5884,5884fold
+5891,5893fold
+5964,5965fold
+5971,5980fold
+5987,5989fold
+6005,6006fold
+6015,6020fold
+6025,6025fold
+6025,6037fold
+6039,6040fold
+6046,6046fold
+6048,6048fold
+6094,6095fold
+6147,6149fold
+6187,6189fold
+6207,6207fold
+6209,6209fold
+6219,6219fold
+6243,6245fold
+6283,6285fold
+6303,6303fold
+6305,6305fold
+6315,6315fold
+6339,6341fold
+6379,6381fold
+6399,6399fold
+6401,6401fold
+6411,6411fold
+6447,6448fold
+6450,6451fold
+6458,6461fold
+6471,6471fold
+6495,6496fold
+6498,6498fold
+6485,6498fold
+6510,6514fold
+6533,6533fold
+6557,6558fold
+6560,6560fold
+6547,6560fold
+6572,6576fold
+6594,6594fold
+6764,6768fold
+6777,6777fold
+6779,6779fold
+6792,6861fold
+6878,6881fold
+6924,6924fold
+6931,6931fold
+6933,6936fold
+6864,6995fold
+7032,7036fold
+7045,7048fold
+7050,7051fold
+7058,7059fold
+7061,7062fold
+7087,7087fold
+7081,7091fold
+7101,7101fold
+7103,7103fold
+7137,7141fold
+7172,7172fold
+7174,7174fold
+7222,7225fold
+7235,7238fold
+7241,7242fold
+7244,7245fold
+7251,7280fold
+7327,7327fold
+7289,7378fold
+7381,7401fold
+7421,7421fold
+7411,7423fold
+7436,7438fold
+7440,7440fold
+7433,7468fold
+7509,7510fold
+7565,7565fold
+7567,7567fold
+7471,7580fold
+7609,7612fold
+7627,7627fold
+7630,7639fold
+7668,7671fold
+7686,7686fold
+7738,7740fold
+7746,7751fold
+7742,7754fold
+7763,7764fold
+7771,7778fold
+7780,7781fold
+8055,8055fold
+7689,8131fold
+8147,8155fold
+8157,8160fold
+8165,8169fold
+8171,8178fold
+8165,8178fold
+8183,8183fold
+8185,8185fold
+8187,8188fold
+8190,8190fold
+8183,8193fold
+8195,8196fold
+8223,8223fold
+8225,8225fold
+8254,8255fold
+8262,8287fold
+8355,8355fold
+8357,8357fold
+8325,8365fold
+8372,8376fold
+8379,8379fold
+8368,8379fold
+8382,8382fold
+8384,8384fold
+8382,8389fold
+8392,8393fold
+8412,8412fold
+8414,8414fold
+8448,8448fold
+8450,8453fold
+8457,8460fold
+8464,8478fold
+8483,8484fold
+8486,8488fold
+8491,8493fold
+8495,8497fold
+8519,8532fold
+8534,8543fold
+8545,8551fold
+8574,8574fold
+8576,8576fold
+8571,8577fold
+8585,8586fold
+8588,8597fold
+8628,8629fold
+8658,8660fold
+8662,8664fold
+8694,8695fold
+8701,8708fold
+8710,8710fold
+8754,8754fold
+8765,8779fold
+8785,8788fold
+8801,8802fold
+8808,8808fold
+8804,8810fold
+8848,8850fold
+8853,8853fold
+8867,8867fold
+8886,8887fold
+8885,8887fold
+8889,8889fold
+8893,8893fold
+8897,8897fold
+8911,8914fold
+8917,8918fold
+8922,8923fold
+8928,8928fold
+8971,8974fold
+8980,8980fold
+8984,8984fold
+8993,8995fold
+9002,9002fold
+9018,9020fold
+9038,9039fold
+9066,9069fold
+9075,9075fold
+9079,9079fold
+9129,9132fold
+9138,9138fold
+9142,9142fold
+9166,9168fold
+9186,9187fold
+9214,9217fold
+9223,9223fold
+9227,9227fold
+9277,9280fold
+9286,9286fold
+9290,9290fold
+9341,9344fold
+9350,9350fold
+9354,9354fold
+9405,9408fold
+9414,9414fold
+9418,9418fold
+9442,9442fold
+9446,9446fold
+9448,9448fold
+9453,9462fold
+9467,9467fold
+9525,9529fold
+9531,9533fold
+9541,9547fold
+9550,9550fold
+9560,9562fold
+9567,9567fold
+9625,9629fold
+9631,9633fold
+9641,9647fold
+9650,9650fold
+9659,9664fold
+9695,9696fold
+9702,9702fold
+9704,9704fold
+9724,9724fold
+9730,9793fold
+9798,9799fold
+10163,10163fold
+10173,10173fold
+10183,10183fold
+10192,10192fold
+10214,10214fold
+10219,10221fold
+10223,10224fold
+10226,10226fold
+10229,10229fold
+10238,10242fold
+10245,10250fold
+10262,10263fold
+10253,10264fold
+10362,10365fold
+10398,10398fold
+10400,10400fold
+10404,10412fold
+10415,10416fold
+10419,10420fold
+10435,10450fold
+10493,10510fold
+10512,10520fold
+10541,10542fold
+10560,10562fold
+10544,10632fold
+10661,10664fold
+10679,10679fold
+10682,10692fold
+10721,10724fold
+10739,10739fold
+10742,10754fold
+10757,10765fold
+10768,10774fold
+10779,10797fold
+10800,10803fold
+10809,10814fold
+10805,10818fold
+10840,10840fold
+10842,10842fold
+10844,10844fold
+10835,10844fold
+10847,10854fold
+10856,10857fold
+10860,10860fold
+10799,10860fold
+10863,10878fold
+10881,10882fold
+10884,10885fold
+10889,10890fold
+10892,10892fold
+10921,10921fold
+10924,10924fold
+10894,10928fold
+10937,10937fold
+10940,10940fold
+10986,10996fold
+10930,11004fold
+11006,11018fold
+11034,11034fold
+11036,11036fold
+11020,11044fold
+11086,11086fold
+11105,11105fold
+11046,11126fold
+11129,11130fold
+11133,11134fold
+11136,11146fold
+11148,11157fold
+11160,11161fold
+11163,11173fold
+11175,11233fold
+11235,11296fold
+11299,11300fold
+11302,11318fold
+11323,11323fold
+11342,11343fold
+11367,11374fold
+11378,11385fold
+11320,11392fold
+11394,11409fold
+11426,11446fold
+11448,11459fold
+11462,11463fold
+11466,11467fold
+11525,11525fold
+11527,11527fold
+11505,11567fold
+11594,11595fold
+11614,11671fold
+11694,11699fold
+11704,11705fold
+11708,11709fold
+11711,11711fold
+11720,11725fold
+11727,11737fold
+11739,11739fold
+11749,11752fold
+11754,11754fold
+11761,11763fold
+11766,11769fold
+11772,11775fold
+11780,11782fold
+11784,11784fold
+11794,11795fold
+11797,11797fold
+11805,11806fold
+11809,11810fold
+11813,11818fold
+11820,11820fold
+11829,11832fold
+11835,11836fold
+11838,11838fold
+11845,11847fold
+11850,11851fold
+11853,11853fold
+11860,11861fold
+11863,11863fold
+11869,11872fold
+11673,11880fold
+11917,11921fold
+11930,11933fold
+11935,11936fold
+11943,11944fold
+11946,11947fold
+11972,11972fold
+11966,11976fold
+11986,11986fold
+11988,11988fold
+12022,12026fold
+12057,12057fold
+12059,12059fold
+12073,12078fold
+12080,12080fold
+12083,12083fold
+12086,12086fold
+12103,12111fold
+12113,12116fold
+12121,12125fold
+12127,12134fold
+12121,12134fold
+12139,12139fold
+12141,12141fold
+12143,12144fold
+12146,12146fold
+12139,12149fold
+12151,12152fold
+12179,12179fold
+12181,12181fold
+12210,12211fold
+12218,12243fold
+12311,12311fold
+12313,12313fold
+12281,12321fold
+12328,12332fold
+12335,12335fold
+12324,12335fold
+12338,12338fold
+12340,12340fold
+12338,12345fold
+12348,12349fold
+12368,12368fold
+12370,12370fold
+12404,12404fold
+12406,12409fold
+12413,12416fold
+12420,12434fold
+12439,12440fold
+12442,12444fold
+12447,12449fold
+12451,12453fold
+12475,12488fold
+12490,12499fold
+12501,12507fold
+12530,12530fold
+12532,12532fold
+12527,12533fold
+12541,12542fold
+12544,12553fold
+12584,12585fold
+12614,12616fold
+12618,12620fold
+12650,12651fold
+12657,12664fold
+12666,12666fold
+12710,12710fold
+12721,12735fold
+12741,12744fold
+12757,12758fold
+12764,12764fold
+12760,12766fold
+12804,12806fold
+12809,12809fold
+12823,12823fold
+12837,12837fold
+12843,12906fold
+12911,12912fold
+13232,13232fold
+13254,13260fold
+13333,13336fold
+13357,13358fold
+13363,13363fold
+13388,13457fold
+13474,13477fold
+13520,13520fold
+13527,13527fold
+13529,13532fold
+13460,13591fold
+13628,13632fold
+13641,13644fold
+13646,13647fold
+13654,13655fold
+13657,13658fold
+13683,13683fold
+13677,13687fold
+13697,13697fold
+13699,13699fold
+13733,13737fold
+13768,13768fold
+13770,13770fold
+13818,13821fold
+13831,13834fold
+13837,13838fold
+13840,13841fold
+13847,13876fold
+13923,13923fold
+13885,13974fold
+13977,13997fold
+14017,14017fold
+14007,14019fold
+14032,14034fold
+14036,14036fold
+14029,14064fold
+14105,14106fold
+14161,14161fold
+14163,14163fold
+14067,14179fold
+14195,14198fold
+14213,14213fold
+14216,14228fold
+14244,14247fold
+14262,14262fold
+14314,14316fold
+14322,14327fold
+14318,14330fold
+14339,14340fold
+14347,14354fold
+14356,14357fold
+14631,14631fold
+14265,14707fold
+14723,14731fold
+14733,14736fold
+14741,14745fold
+14747,14754fold
+14741,14754fold
+14759,14759fold
+14761,14761fold
+14763,14764fold
+14766,14766fold
+14759,14769fold
+14771,14772fold
+14799,14799fold
+14801,14801fold
+14830,14831fold
+14838,14863fold
+14931,14931fold
+14933,14933fold
+14901,14941fold
+14948,14952fold
+14955,14955fold
+14944,14955fold
+14958,14958fold
+14960,14960fold
+14958,14965fold
+14968,14969fold
+14988,14988fold
+14990,14990fold
+15024,15024fold
+15026,15029fold
+15033,15036fold
+15040,15054fold
+15059,15060fold
+15062,15064fold
+15067,15069fold
+15071,15073fold
+15095,15108fold
+15110,15119fold
+15121,15127fold
+15150,15150fold
+15152,15152fold
+15147,15153fold
+15161,15162fold
+15164,15173fold
+15204,15205fold
+15234,15236fold
+15238,15240fold
+15270,15271fold
+15277,15284fold
+15286,15286fold
+15330,15330fold
+15341,15355fold
+15361,15364fold
+15377,15378fold
+15384,15384fold
+15380,15386fold
+15424,15426fold
+15429,15429fold
+15443,15443fold
+15457,15457fold
+15463,15526fold
+15531,15532fold
+15852,15852fold
+15865,15871fold
+15920,15923fold
+15967,15971fold
+15980,15980fold
+15982,15982fold
+15995,16064fold
+16081,16084fold
+16127,16127fold
+16134,16134fold
+16136,16139fold
+16067,16198fold
+16235,16239fold
+16248,16251fold
+16253,16254fold
+16261,16262fold
+16264,16265fold
+16290,16290fold
+16284,16294fold
+16304,16304fold
+16306,16306fold
+16340,16344fold
+16375,16375fold
+16377,16377fold
+16425,16428fold
+16438,16441fold
+16444,16445fold
+16447,16448fold
+16454,16483fold
+16530,16530fold
+16492,16581fold
+16584,16604fold
+16624,16624fold
+16614,16626fold
+16639,16641fold
+16643,16643fold
+16636,16671fold
+16712,16713fold
+16768,16768fold
+16770,16770fold
+16674,16783fold
+16812,16815fold
+16830,16830fold
+16833,16842fold
+16871,16874fold
+16889,16889fold
+16941,16943fold
+16949,16954fold
+16945,16957fold
+16966,16967fold
+16974,16981fold
+16983,16984fold
+17258,17258fold
+16892,17334fold
+17350,17358fold
+17360,17363fold
+17368,17372fold
+17374,17381fold
+17368,17381fold
+17386,17386fold
+17388,17388fold
+17390,17391fold
+17393,17393fold
+17386,17396fold
+17398,17399fold
+17426,17426fold
+17428,17428fold
+17457,17458fold
+17465,17490fold
+17558,17558fold
+17560,17560fold
+17528,17568fold
+17575,17579fold
+17582,17582fold
+17571,17582fold
+17585,17585fold
+17587,17587fold
+17585,17592fold
+17595,17596fold
+17615,17615fold
+17617,17617fold
+17651,17651fold
+17653,17656fold
+17660,17663fold
+17667,17681fold
+17686,17687fold
+17689,17691fold
+17694,17696fold
+17698,17700fold
+17722,17735fold
+17737,17746fold
+17748,17754fold
+17777,17777fold
+17779,17779fold
+17774,17780fold
+17788,17789fold
+17791,17800fold
+17831,17832fold
+17861,17863fold
+17865,17867fold
+17897,17898fold
+17904,17911fold
+17913,17913fold
+17957,17957fold
+17968,17982fold
+17988,17991fold
+18004,18005fold
+18011,18011fold
+18007,18013fold
+18051,18053fold
+18056,18056fold
+18070,18070fold
+18084,18084fold
+18090,18153fold
+18158,18159fold
+18479,18479fold
+18492,18497fold
+18546,18549fold
+18564,18564fold
+18570,18633fold
+18638,18639fold
+18959,18959fold
+18972,18975fold
+18978,18985fold
+18991,18992fold
+18994,18995fold
+19068,19070fold
+19072,19074fold
+19076,19077fold
+19064,19082fold
+19090,19090fold
+19096,19096fold
+19140,19142fold
+19163,19163fold
+19187,19187fold
+19209,19211fold
+19247,19249fold
+19255,19255fold
+19301,19303fold
+19309,19309fold
+19312,19312fold
+19338,19339fold
+19395,19395fold
+19397,19397fold
+19449,19452fold
+19458,19458fold
+19462,19462fold
+19516,19519fold
+19525,19525fold
+19529,19529fold
+19583,19586fold
+19592,19592fold
+19596,19596fold
+19612,19612fold
+19632,19634fold
+19675,19677fold
+19696,19696fold
+19698,19698fold
+19708,19708fold
+19716,19717fold
+19720,19720fold
+19719,19720fold
+19723,19723fold
+19722,19723fold
+19725,19725fold
+19725,19726fold
+19736,19736fold
+19738,19738fold
+19735,19739fold
+19748,19748fold
+19750,19750fold
+19754,19754fold
+19756,19756fold
+19753,19757fold
+19766,19766fold
+19768,19768fold
+19776,19776fold
+19776,19776fold
+19778,19778fold
+19778,19778fold
+19781,19781fold
+19783,19783fold
+19780,19784fold
+19780,19788fold
+19790,19790fold
+19794,19794fold
+19792,19794fold
+19796,19796fold
+19812,19812fold
+19812,19812fold
+19841,19843fold
+19849,19849fold
+19880,19882fold
+19898,19898fold
+19900,19900fold
+19902,19903fold
+19905,19905fold
+19907,19907fold
+19909,19909fold
+19911,19911fold
+19913,19913fold
+19915,19915fold
+19918,19918fold
+19928,19928fold
+19928,19928fold
+19981,19983fold
+19989,19989fold
+20040,20042fold
+20045,20045fold
+20077,20079fold
+20086,20090fold
+20086,20090fold
+20085,20090fold
+20099,20099fold
+20131,20133fold
+20136,20136fold
+20168,20170fold
+20177,20181fold
+20177,20181fold
+20176,20181fold
+20190,20190fold
+20232,20234fold
+20240,20240fold
+20248,20248fold
+20254,20254fold
+20276,20276fold
+20278,20283fold
+20285,20290fold
+20325,20325fold
+20331,20331fold
+20386,20388fold
+20394,20394fold
+20445,20447fold
+20450,20450fold
+20482,20484fold
+20491,20495fold
+20491,20495fold
+20490,20495fold
+20504,20504fold
+20536,20538fold
+20541,20541fold
+20573,20575fold
+20582,20586fold
+20582,20586fold
+20581,20586fold
+20595,20595fold
+20637,20639fold
+20645,20645fold
+20653,20653fold
+20659,20659fold
+20681,20681fold
+20683,20688fold
+20690,20695fold
+20730,20730fold
+20736,20736fold
+20791,20793fold
+20799,20799fold
+20850,20852fold
+20855,20855fold
+20887,20889fold
+20896,20900fold
+20896,20900fold
+20895,20900fold
+20909,20909fold
+20941,20943fold
+20946,20946fold
+20978,20980fold
+20987,20991fold
+20987,20991fold
+20986,20991fold
+21000,21000fold
+21042,21044fold
+21050,21050fold
+21058,21058fold
+21064,21064fold
+21086,21086fold
+21088,21093fold
+21095,21100fold
+21135,21135fold
+21141,21141fold
+21203,21206fold
+21212,21212fold
+21216,21216fold
+21248,21250fold
+21268,21269fold
+21296,21299fold
+21305,21305fold
+21309,21309fold
+21312,21312fold
+21312,21312fold
+21342,21343fold
+21358,21358fold
+21358,21358fold
+21369,21370fold
+21372,21373fold
+21385,21394fold
+21363,21396fold
+21363,21396fold
+21402,21416fold
+21418,21433fold
+21435,21449fold
+21451,21457fold
+21400,21459fold
+21400,21459fold
+21463,21470fold
+21463,21470fold
+21517,21520fold
+21526,21526fold
+21530,21530fold
+21592,21595fold
+21601,21601fold
+21605,21605fold
+21667,21670fold
+21676,21676fold
+21680,21680fold
+21699,21699fold
+21699,21699fold
+21699,21699fold
+21699,21699fold
+21699,21699fold
+21699,21699fold
+21699,21699fold
+21699,21699fold
+21704,21704fold
+21704,21704fold
+21704,21704fold
+21704,21704fold
+21708,21708fold
+21708,21708fold
+21708,21708fold
+21708,21708fold
+21704,21711fold
+21704,21711fold
+21715,21715fold
+21715,21715fold
+21758,21761fold
+21767,21767fold
+21771,21771fold
+21785,21789fold
+21785,21789fold
+21793,21799fold
+21793,21799fold
+21808,21809fold
+21808,21809fold
+21803,21811fold
+21803,21811fold
+21815,21821fold
+21815,21821fold
+21834,21836fold
+21838,21840fold
+21825,21843fold
+21825,21843fold
+21884,21888fold
+21890,21895fold
+21899,21912fold
+21915,21921fold
+21924,21925fold
+21927,21927fold
+21929,21929fold
+21962,21965fold
+22044,22044fold
+22046,22046fold
+22080,22080fold
+22107,22107fold
+22109,22109fold
+22131,22132fold
+22135,22136fold
+22139,22140fold
+22143,22144fold
+22134,22146fold
+22169,22170fold
+22172,22182fold
+22184,22184fold
+22235,22235fold
+22255,22255fold
+22257,22257fold
+22262,22262fold
+22265,22265fold
+22260,22269fold
+22318,22318fold
+22320,22320fold
+22320,22320fold
+22351,22354fold
+22356,22359fold
+22365,22365fold
+22367,22367fold
+22369,22369fold
+22371,22373fold
+22375,22375fold
+22378,22378fold
+22386,22386fold
+22429,22430fold
+22586,22586fold
+22588,22588fold
+22592,22592fold
+22666,22679fold
+22682,22693fold
+22695,22700fold
+22705,22707fold
+22710,22711fold
+22714,22715fold
+22718,22719fold
+22722,22723fold
+22709,22725fold
+22731,22738fold
+22740,22742fold
+22745,22746fold
+22749,22750fold
+22753,22754fold
+22757,22758fold
+22744,22763fold
+22787,22789fold
+22791,22793fold
+22795,22797fold
+22841,22841fold
+22908,22908fold
+22929,22956fold
+22969,22969fold
+22977,22982fold
+22987,22994fold
+22996,22998fold
+23001,23002fold
+23005,23006fold
+23009,23010fold
+23013,23014fold
+23000,23019fold
+23023,23023fold
+23043,23045fold
+23047,23049fold
+23051,23053fold
+23058,23069fold
+23071,23083fold
+23086,23088fold
+23091,23093fold
+3614
+normal zo
+3636
+normal zo
+3640
+normal zo
+3644
+normal zo
+3707
+normal zo
+7630
+normal zo
+7689
+normal zo
+7689
+normal zo
+8325
+normal zo
+8325
+normal zo
+8412
+normal zo
+8414
+normal zo
+8519
+normal zo
+8534
+normal zo
+8628
+normal zo
+8765
+normal zo
+8801
+normal zo
+8804
+normal zo
+8804
+normal zo
+10682
+normal zo
+12281
+normal zo
+12281
+normal zo
+12368
+normal zo
+12370
+normal zo
+12475
+normal zo
+12490
+normal zo
+let s:l = 12558 - ((76 * winheight(0) + 27) / 55)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+12558
+normal! 031l
+let &so = s:so_save | let &siso = s:siso_save
+doautoall SessionLoadPost
+" vim: set ft=vim :
