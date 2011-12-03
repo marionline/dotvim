@@ -4,12 +4,10 @@
 [submodule "bundle/bash-support"]
 	path = bundle/bash-support
 	url = https://github.com/vim-scripts/bash-support.vim.git
+	ignore = dirty
 [submodule "bundle/phpErrorMarker"]
 	path = bundle/phpErrorMarker
 	url = https://github.com/vim-scripts/phpErrorMarker.git
-[submodule "bundle/ManPageView"]
-	path = bundle/ManPageView
-	url = https://github.com/vim-scripts/ManPageView.git
 [submodule "bundle/closetag"]
 	path = bundle/closetag
 	url = https://github.com/vim-scripts/closetag.vim.git
