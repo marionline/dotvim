@@ -9,7 +9,7 @@
 "
 " License:
 "
-" Copyright (C) 2005 - 2010  Eric Van Dewoestine
+" Copyright (C) 2005 - 2011  Eric Van Dewoestine
 "
 " This program is free software: you can redistribute it and/or modify
 " it under the terms of the GNU General Public License as published by
@@ -27,6 +27,13 @@
 " }}}
 
 " Global Variables {{{
+let g:NUMBER_TYPE = 0
+let g:STRING_TYPE = 1
+let g:FUNCREF_TYPE = 2
+let g:LIST_TYPE = 3
+let g:DICT_TYPE = 4
+let g:FLOAT_TYPE = 5
+
 if !exists("g:EclimLogLevel")
   let g:EclimLogLevel = 4
 endif
@@ -105,14 +112,14 @@ endif
 
 if !exists("g:EclimHome")
   " set at build/install time.
-  let g:EclimHome = '/home/mario/bin/eclipse/plugins/org.eclim_1.6.2.7-g752fb1b'
+  let g:EclimHome = '/home/mario/bin/eclipse//plugins/org.eclim_1.7.2.99-gad8514b'
   if has('win32unix')
     let g:EclimHome = eclim#cygwin#CygwinPath(g:EclimHome)
   endif
 endif
 if !exists("g:EclimEclipseHome")
   " set at build/install time.
-  let g:EclimEclipseHome = '/home/mario/bin/eclipse'
+  let g:EclimEclipseHome = '/home/mario/bin/eclipse/'
   if has('win32unix')
     let g:EclimEclipseHome = eclim#cygwin#CygwinPath(g:EclimEclipseHome)
   endif
@@ -135,10 +142,6 @@ if !exists(":EclimSettings")
   command -nargs=? -complete=customlist,eclim#eclipse#CommandCompleteWorkspaces
     \ EclimSettings :call eclim#Settings('<args>')
 endif
-if !exists(":PatchEclim")
-  command -nargs=+ -complete=customlist,eclim#CommandCompleteScriptRevision
-    \ PatchEclim :call eclim#PatchEclim(<f-args>)
-endif
 if !exists(":EclimDisable")
   command EclimDisable :call eclim#Disable()
 endif
@@ -157,6 +160,11 @@ endif
 " Auto Commands{{{
 
 if g:EclimShowCurrentError
+  " forcing load of util, otherwise a bug in vim is sometimes triggered when
+  " searching for a pattern where the pattern is echoed twice.  Reproducable
+  " by opening a new vim and searching for 't' (/t<cr>).
+  runtime eclim/autoload/eclim/util.vim
+
   augroup eclim_show_error
     autocmd!
     autocmd CursorMoved * call eclim#util#ShowCurrentError()
@@ -180,21 +188,14 @@ endif
 
 if g:EclimSignLevel
   augroup eclim_qf
-    autocmd QuickFixCmdPost *make* call eclim#display#signs#Show('', 'qf')
-    autocmd QuickFixCmdPost grep*,vimgrep* call eclim#display#signs#Show('i', 'qf')
-    autocmd QuickFixCmdPost lgrep*,lvimgrep* call eclim#display#signs#Show('i', 'loc')
     autocmd WinEnter,BufWinEnter * call eclim#display#signs#Update()
-  augroup END
-endif
-
-if has('netbeans_intg')
-  augroup eclim_vimplugin
-    " autocommands used to work around the fact that the "unmodified" event in
-    " vim's netbean support is commentted out for some reason.
-    autocmd BufWritePost * call eclim#vimplugin#BufferWritten()
-    autocmd CursorHold * call eclim#vimplugin#BufferUnmodified()
-    autocmd CursorHold * call eclim#vimplugin#BufferUnmodified()
-    autocmd BufWinLeave * call eclim#vimplugin#BufferClosed()
+    if has('gui_running')
+      " delayed to keep the :make output on the screen for gvim
+      autocmd QuickFixCmdPost * call eclim#util#DelayedCommand(
+        \ 'call eclim#display#signs#QuickFixCmdPost()')
+    else
+      autocmd QuickFixCmdPost * call eclim#display#signs#QuickFixCmdPost()
+    endif
   augroup END
 endif
 

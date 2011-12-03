@@ -1,11 +1,10 @@
-" Author:  Eric Van Dewoestine
+" Author: Eric Van Dewoestine
 "
 " Description: {{{
-"   see http://eclim.org/vim/php/complete.html
 "
 " License:
 "
-" Copyright (C) 2005 - 2011  Eric Van Dewoestine
+" Copyright (C) 2005 - 2010  Eric Van Dewoestine
 "
 " This program is free software: you can redistribute it and/or modify
 " it under the terms of the GNU General Public License as published by
@@ -22,19 +21,17 @@
 "
 " }}}
 
-" Script Varables {{{
-  let s:complete_command =
-    \ '-command php_complete -p "<project>" -f "<file>" -o <offset> -e <encoding>'
-" }}}
+runtime ftplugin/help.vim
 
-" CodeComplete(findstart, base) {{{
-" Handles php code completion.
-function! eclim#php#complete#CodeComplete(findstart, base)
-  if !eclim#php#util#IsPhpCode(line('.'))
-    return eclim#html#complete#CodeComplete(a:findstart, a:base)
-  endif
+nnoremap <silent> <buffer> <cr> :call eclim#help#Help('', 1)<cr>
+nnoremap <silent> <buffer> <c-]> :call eclim#help#Help('', 1)<cr>
 
-  return eclim#lang#CodeComplete(s:complete_command, a:findstart, a:base)
-endfunction " }}}
+if !exists("g:tlist_eclimhelp_settings")
+  let g:tlist_eclimhelp_settings = {
+      \ 'lang': 'eclimhelp',
+      \ 'parse': 'eclim#taglisttoo#lang#eclimhelp#Parse',
+      \ 'tags': {'s': 'section', 'a': 'anchor'}
+    \ }
+endif
 
 " vim:ft=vim:fdm=marker

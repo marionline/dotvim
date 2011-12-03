@@ -463,7 +463,7 @@ endfunction " }}}
 " Focuses the window containing the supplied buffer name or buffer number.
 " Returns 1 if the window was found, 0 otherwise.
 function! eclim#util#GoToBufferWindow(buf)
-  if type(a:buf) == 0
+  if type(a:buf) == g:NUMBER_TYPE
     let winnr = bufwinnr(a:buf)
   else
     let name = eclim#util#EscapeBufferName(a:buf)
@@ -531,13 +531,14 @@ endfunction " }}}
 " To determine element equality both '==' and 'is' are tried as well as
 " ^element$ to support a regex supplied element string.
 function! eclim#util#ListContains(list, element)
-  let string = type(a:element) == 1 ? a:element : escape(string(a:element), '\')
+  let string = type(a:element) == g:STRING_TYPE ?
+    \ a:element : escape(string(a:element), '\')
   for element in a:list
     if element is a:element ||
         \ (type(element) == type(a:element) && element == a:element)
       return 1
     else
-      let estring = type(element) == 1 ? element : string(element)
+      let estring = type(element) == g:STRING_TYPE ? element : string(element)
       if estring =~ '^' . string . '$'
         return 1
       endif
@@ -565,6 +566,17 @@ function! eclim#util#MakeWithCompiler(compiler, bang, args, ...)
   if has('win32') || has('win64')
     let saved_shellpipe = &shellpipe
     set shellpipe=>\ %s\ 2<&1
+  endif
+
+  if a:compiler =~ 'ant\|maven\|mvn'
+    runtime autoload/eclim/java/test.vim
+    if exists('*eclim#java#test#ResolveQuickfixResults')
+      augroup eclim_make_java_test
+        autocmd!
+        autocmd QuickFixCmdPost make
+          \ call eclim#java#test#ResolveQuickfixResults(['junit', 'testng'])
+      augroup END
+    endif
   endif
 
   try
@@ -618,6 +630,8 @@ function! eclim#util#MakeWithCompiler(compiler, bang, args, ...)
       exec 'lcd ' . escape(w:quickfix_dir, ' ')
       unlet w:quickfix_dir
     endif
+
+    silent! autocmd! eclim_make_java_test
   endtry
 endfunction " }}}
 
@@ -635,6 +649,18 @@ endfunction " }}}
 function! eclim#util#MarkSave()
   let s:markCol = col("'`")
   return line("''")
+endfunction " }}}
+
+" Pad(string, length, [char]) {{{
+" Pad the supplied string.
+function! eclim#util#Pad(string, length, ...)
+  let char = a:0 > 0 ? a:1 : ' '
+
+  let string = a:string
+  while len(string) < a:length
+    let string .= char
+  endwhile
+  return string
 endfunction " }}}
 
 " ParseArgs(args) {{{
@@ -708,7 +734,7 @@ function! eclim#util#ParseLocationEntries(entries, ...)
     let dict = s:ParseLocationEntry(entry)
 
     " partition by severity
-    if type(entries) == 4 " dictionary
+    if type(entries) == g:DICT_TYPE
       " empty key not allowed
       let type = dict.type == '' ? ' ' : tolower(dict.type)
       if !has_key(entries, type)
@@ -723,7 +749,7 @@ function! eclim#util#ParseLocationEntries(entries, ...)
   endfor
 
   " re-assemble severity partitioned results
-  if type(entries) == 4 " dictionary
+  if type(entries) == g:DICT_TYPE
     let results = []
     if has_key(entries, 'e')
       let results += remove(entries, 'e')
@@ -750,13 +776,27 @@ endfunction " }}}
 " s:ParseLocationEntry(entry) {{{
 function! s:ParseLocationEntry(entry)
   let entry = a:entry
-  let file = substitute(entry, '\(.\{-}\)|.*', '\1', '')
-  let line = substitute(entry, '.*|\([0-9]\+\) col.*', '\1', '')
-  let col = substitute(entry, '.*col \([0-9]\+\)|.*', '\1', '')
-  let message = substitute(entry, '.*col [0-9]\+|\(.\{-}\)\(|.*\|$\)', '\1', '')
-  let type = substitute(entry, '.*|\(e\|w\)$', '\1', '')
-  if type == entry
+  if type(entry) == g:DICT_TYPE
+    let file = entry.filename
+    let line = entry.line
+    let col = entry.column
+    let message = entry.message
     let type = ''
+    if has_key(entry, 'warning')
+      let type = entry.warning ? 'w' : 'e'
+    endif
+
+  " FIXME: should be safe to remove this block after all commands have gone
+  " through the json conversion.
+  else
+    let file = substitute(entry, '\(.\{-}\)|.*', '\1', '')
+    let line = substitute(entry, '.*|\([0-9]\+\) col.*', '\1', '')
+    let col = substitute(entry, '.*col \([0-9]\+\)|.*', '\1', '')
+    let message = substitute(entry, '.*col [0-9]\+|\(.\{-}\)\(|.*\|$\)', '\1', '')
+    let type = substitute(entry, '.*|\(e\|w\)$', '\1', '')
+    if type == entry
+      let type = ''
+    endif
   endif
 
   if has('win32unix')
@@ -965,7 +1005,7 @@ endfunction " }}}
 " ShowCurrentError() {{{
 " Shows the error on the cursor line if one.
 function! eclim#util#ShowCurrentError()
-  if mode() != 'n'
+  if mode() != 'n' || expand('%') == ''
     return
   endif
 
@@ -1132,15 +1172,18 @@ function! eclim#util#System(cmd, ...)
   return result
 endfunction " }}}
 
-" TempWindow(name, lines, [readonly]) {{{
+" TempWindow(name, lines, [options]) {{{
 " Opens a temp window w/ the given name and contents which is readonly unless
 " specified otherwise.
 function! eclim#util#TempWindow(name, lines, ...)
+  let options = a:0 > 0 ? a:1 : {}
   let filename = expand('%:p')
   let winnr = winnr()
 
-  call eclim#util#TempWindowClear(a:name)
   let name = eclim#util#EscapeBufferName(a:name)
+
+  let line = 1
+  let col = 1
 
   if bufwinnr(name) == -1
     silent! noautocmd exec "botright 10sview " . escape(a:name, ' []')
@@ -1156,8 +1199,14 @@ function! eclim#util#TempWindow(name, lines, ...)
     if temp_winnr != winnr()
       exec temp_winnr . 'winc w'
       silent doautocmd WinEnter
+      if get(options, 'preserveCursor', 0)
+        let line = line('.')
+        let col = col('.')
+      endif
     endif
   endif
+
+  call eclim#util#TempWindowClear(a:name)
 
   setlocal modifiable
   setlocal noreadonly
@@ -1165,7 +1214,9 @@ function! eclim#util#TempWindow(name, lines, ...)
   retab
   silent 1,1delete _
 
-  if len(a:000) == 0 || a:000[0]
+  call cursor(line, col)
+
+  if get(options, 'readonly', 1)
     setlocal nomodified
     setlocal nomodifiable
     setlocal readonly
@@ -1205,15 +1256,6 @@ endfunction " }}}
 function! eclim#util#TempWindowCommand(command, name, ...)
   let name = eclim#util#EscapeBufferName(a:name)
 
-  let line = 1
-  let col = 1
-  " if the window is open, save the cursor position
-  if bufwinnr(name) != -1
-    exec bufwinnr(name) . "winc w"
-    let line = line('.')
-    let col = col('.')
-  endif
-
   if len(a:000) > 0
     let port = a:000[0]
     let result = eclim#ExecuteEclim(a:command, port)
@@ -1226,9 +1268,7 @@ function! eclim#util#TempWindowCommand(command, name, ...)
     return 0
   endif
 
-  call eclim#util#TempWindow(name, results)
-
-  call cursor(line, col)
+  call eclim#util#TempWindow(name, results, {'preserveCursor': 1})
 
   return 1
 endfunction " }}}

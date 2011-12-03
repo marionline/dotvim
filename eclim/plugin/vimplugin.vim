@@ -1,11 +1,11 @@
 " Author:  Eric Van Dewoestine
 "
 " Description: {{{
-"   see http://eclim.org/vim/php/complete.html
+"   Setup for eclim's vimplugin (gvim in eclipse) support.
 "
 " License:
 "
-" Copyright (C) 2005 - 2011  Eric Van Dewoestine
+" Copyright (C) 2011  Eric Van Dewoestine
 "
 " This program is free software: you can redistribute it and/or modify
 " it under the terms of the GNU General Public License as published by
@@ -22,19 +22,17 @@
 "
 " }}}
 
-" Script Varables {{{
-  let s:complete_command =
-    \ '-command php_complete -p "<project>" -f "<file>" -o <offset> -e <encoding>'
+" Auto Commands{{{
+if has('netbeans_intg') && exists('g:vimplugin_running')
+  augroup eclim_vimplugin
+    " autocommands used to work around the fact that the "unmodified" event in
+    " vim's netbean support is commentted out for some reason.
+    autocmd BufWritePost * call eclim#vimplugin#BufferWritten()
+    autocmd CursorHold,CursorHoldI * call eclim#vimplugin#BufferModified()
+    autocmd BufWinLeave * call eclim#vimplugin#BufferClosed()
+    autocmd BufEnter * call eclim#vimplugin#BufferEnter()
+  augroup END
+endif
 " }}}
-
-" CodeComplete(findstart, base) {{{
-" Handles php code completion.
-function! eclim#php#complete#CodeComplete(findstart, base)
-  if !eclim#php#util#IsPhpCode(line('.'))
-    return eclim#html#complete#CodeComplete(a:findstart, a:base)
-  endif
-
-  return eclim#lang#CodeComplete(s:complete_command, a:findstart, a:base)
-endfunction " }}}
 
 " vim:ft=vim:fdm=marker

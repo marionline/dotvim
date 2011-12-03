@@ -4,7 +4,7 @@
 "
 " License:
 "
-" Copyright (C) 2005 - 2009  Eric Van Dewoestine
+" Copyright (C) 2005 - 2011  Eric Van Dewoestine
 "
 " This program is free software: you can redistribute it and/or modify
 " it under the terms of the GNU General Public License as published by
@@ -46,9 +46,9 @@ function! eclim#project#problems#Problems(project, open)
   let command = substitute(command, '<project>', project, '')
   let result = eclim#ExecuteEclim(command)
   let errors = []
-  if result =~ '|'
+  if type(result) == g:LIST_TYPE && len(result) > 0
     let errors = eclim#util#ParseLocationEntries(
-          \ split(result, '\n'), g:EclimValidateSortResults)
+      \ result, g:EclimValidateSortResults)
   endif
 
   let action = eclim#project#problems#IsProblemsList() ? 'r' : ' '
@@ -67,7 +67,32 @@ endfunction " }}}
 function! eclim#project#problems#ProblemsUpdate()
   if g:EclimProjectProblemsUpdateOnSave &&
    \ eclim#project#problems#IsProblemsList()
+
+    " preserve the cursor position in the quickfix window
+    let qf_winnr = 0
+    let index = 1
+    while index <= winnr('$')
+      if getbufvar(winbufnr(index), '&ft') == 'qf'
+        let cur = winnr()
+        let qf_winnr = index
+        exec qf_winnr . 'winc w'
+        let pos = getpos('.')
+        exec cur . 'winc w'
+        break
+      endif
+      let index += 1
+    endwhile
+
     call eclim#project#problems#Problems('', 0)
+
+    " restore the cursor position
+    if qf_winnr
+      let cur = winnr()
+      exec qf_winnr . 'winc w'
+      call setpos('.', pos)
+      redraw
+      exec cur . 'winc w'
+    endif
   endif
 endfunction " }}}
 

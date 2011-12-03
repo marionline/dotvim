@@ -35,6 +35,9 @@
   if !exists("g:TreeActionHighlight")
     let g:TreeActionHighlight = "Statement"
   endif
+  if !exists('g:TreeExpandSingleDirs')
+    let g:TreeExpandSingleDirs = 0
+  endif
 " }}}
 
 " Script Variables {{{
@@ -207,7 +210,7 @@ endfunction " }}}
 " GetFileInfo(file) {{{
 function! eclim#tree#GetFileInfo(file)
   if executable('ls')
-    return split(eclim#util#System('ls -ld ' . a:file), '\n')[0]
+    return split(eclim#util#System("ls -ld '" . a:file . "'"), '\n')[0]
   endif
   return ''
 endfunction "}}}
@@ -774,6 +777,12 @@ function! eclim#tree#Mkdir()
     return
   endif
 
+  " work around apparent vim bug attempting to create a dir with a trailing
+  " slash.
+  if response[-1:] == '/'
+    let response = response[:-2]
+  endif
+
   call mkdir(response, 'p')
   call eclim#tree#Refresh()
 endfunction " }}}
@@ -803,6 +812,11 @@ function! s:PathToAlias(path)
     endfor
   endif
   return a:path
+endfunction " }}}
+
+" s:Depth() {{{
+function! s:Depth()
+  return len(split(eclim#tree#GetPath(), '/'))
 endfunction " }}}
 
 " ExpandDir() {{{
@@ -836,6 +850,10 @@ function! eclim#tree#ExpandDir()
   call map(files, 's:RewriteSpecial(v:val)')
 
   call eclim#tree#WriteContents(dir, dirs, files)
+  if g:TreeExpandSingleDirs && len(files) == 0 && len(dirs) == 1 && s:Depth() < 50
+    TreeNextPrevLine j
+    call eclim#tree#ExpandDir()
+  endif
 endfunction " }}}
 
 " ExpandPath(name, path) {{{
@@ -989,7 +1007,7 @@ function! eclim#tree#ListDir(dir, ...)
     if b:view_hidden
       let ls .= 'A'
     endif
-    let contents = split(eclim#util#System(ls . ' "' . a:dir . '"'), '\n')
+    let contents = split(eclim#util#System(ls . " '" . a:dir . "'"), '\n')
     if !b:view_hidden && &wildignore != ''
       let pattern = substitute(escape(&wildignore, '.'), '\*', '.*', 'g')
       let pattern = '\(' . join(split(pattern, ','), '\|') . '\)$'
@@ -1187,7 +1205,8 @@ function! s:Mappings()
 
   nmap <buffer> <silent> D    :call eclim#tree#Mkdir()<cr>
 
-  nnoremap <buffer> <silent> <c-l> <c-l>:silent doautocmd eclim_tree User <buffer><cr>
+  let ctrl_l = escape(maparg('<c-l>'), '|')
+  exec 'nnoremap <buffer> <silent> <c-l> :silent doautocmd eclim_tree User <buffer><cr>' . ctrl_l
 
   command! -nargs=1 -complete=dir -buffer CD :call eclim#tree#SetRoot('<args>')
   command! -nargs=1 -complete=dir -buffer Cd :call eclim#tree#SetRoot('<args>')

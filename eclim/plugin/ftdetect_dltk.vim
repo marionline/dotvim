@@ -1,7 +1,7 @@
 " Author:  Eric Van Dewoestine
 "
 " Description: {{{
-"   see http://eclim.org/vim/php/complete.html
+"   Vim file type detection script for eclim.
 "
 " License:
 "
@@ -22,19 +22,7 @@
 "
 " }}}
 
-" Script Varables {{{
-  let s:complete_command =
-    \ '-command php_complete -p "<project>" -f "<file>" -o <offset> -e <encoding>'
-" }}}
-
-" CodeComplete(findstart, base) {{{
-" Handles php code completion.
-function! eclim#php#complete#CodeComplete(findstart, base)
-  if !eclim#php#util#IsPhpCode(line('.'))
-    return eclim#html#complete#CodeComplete(a:findstart, a:base)
-  endif
-
-  return eclim#lang#CodeComplete(s:complete_command, a:findstart, a:base)
-endfunction " }}}
+autocmd BufRead .buildpath
+  \ call EclimSetXmlFileType({'buildpath': 'eclipse_buildpath'})
 
 " vim:ft=vim:fdm=marker
