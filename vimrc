@@ -2,7 +2,7 @@
 " Call pathogen plugin
 " http://www.vim.org/scripts/script.php?script_id=2332
 "
-call pathogen#runtime_append_all_bundles()
+call pathogen#infect()
 call pathogen#helptags()
 
 set number
